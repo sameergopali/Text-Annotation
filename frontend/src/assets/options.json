@@ -1,0 +1,86 @@
+{
+    "PartnershipProvider": [
+        "inviteCollaboration",
+        "requestsForOpinion",
+        "checkingUnderstanding",
+        "acknowledgePatientExpertiseKnowledge",
+        "interestCues",
+        "beingLessDominantListenMore",
+        "specificConnection",
+        "generalConnection",
+        "salutation",
+	    "involvement"
+    ],
+    "PartnershipPatient": [
+        "ActiveParticipation/involvement",
+        "ExpressOpinions",
+        "StatePreferences",
+        "SpecificConnection",
+        "GeneralGonnection",
+        "salutation",
+        "Buildtrust"
+    ],
+  
+    "EmotionalSupport": [
+        "ExpressConcern/unease",
+        "Sadness/fear",
+        "Reassurance",
+        "Reward",
+        "Appreciation/Gratitude", 
+	"AcknowledgeError",
+        "N/A"
+    ],
+    "SharedDecisionPatient": [
+        "ExploreOptions",
+        "ApprovalofDecision",
+        "N/A"
+    ],
+    "SharedDecisionProvider": [
+        "ExploreOptions",
+        "SummarizeConfirmUnderstanding",
+        "MakeDecision",
+        "EncourageQuestions",
+        "Approval",
+        "N/A"
+    ],
+    "InfoSeek": [
+        "Symptoms", 
+        "Prognosis",
+        "SchedulingAppt", 
+        "Diagnostics",
+        "Insurance",
+        "General information",
+        "Drugs",
+        "Other", 
+        "N/A"
+    ],
+    "InfoSeekSDOH": [
+        "EconomicStability", 
+        "EducationAccessAndQuality", 
+        "HealthCareAccessAndQuality", 
+        "NeighborhoodAndBuiltEnvironment", 
+        "SocialAndCommunityContext",
+        "Instruction",
+        "N/A"
+    ],
+    "InfoGive": [
+        "Symptoms", 
+        "Prognosis", 
+        "SchedulingAppt", 
+        "Insurance",
+        "Generalinformation",
+        "Other",
+        "Diagnostics",
+        "Drugs", 
+	"CareCoordination",
+        "N/A"
+    ],
+    "InfoGiveSDOH": [
+        "EconomicStability", 
+        "EducationAccessAndQuality", 
+        "HealthCareAccessAndQuality", 
+        "NeighborhoodAndBuiltEnvironment", 
+        "SocialAndCommunityContext", 
+        "N/A"    
+    ]
+}
