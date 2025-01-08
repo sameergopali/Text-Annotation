@@ -17,6 +17,7 @@ function LoginForm(){
             const response = await axios.post('http://localhost:8000/login', {username, password})
             const token = await response.data.access_token;
             login(token);
+            localStorage.setItem('user', username);
             navigate('/dashboard');
         }catch (error) {
             console.error(error);

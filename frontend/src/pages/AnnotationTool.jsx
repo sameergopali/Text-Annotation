@@ -1,32 +1,37 @@
 import {useState, useEffect} from 'react';
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
+import AnnotationContent from '../components/AnnotationContent';
 import Modal from "../components/Modal";
+import TopPanel from "../components/TopPanel" 
 
 
-const AnnotationTool = (state) => {
 
+const AnnotationTool = () => {
+
+    const params = useParams();
     const [modalOpen, setmodalOpen] = useState(false);
     const [selected, setSelected] = useState();
     const [labels, setLabels] = useState([]);
     const [text, setText] = useState();
     const [total, setTotal] = useState(0);
-    const  [curr, setCurr] = useState(0);
+    const [curr, setCurr] = useState(0);
     const onClose = () => {setmodalOpen(false);};
-    const onOpen = () => {setmodalOpen(true)};
-    const location = useLocation();
-    const {finalized, draft} = location.state||{};
+    const OpenModal = () => {setmodalOpen(true)};
 
 
   
     const postSave = async (labels) => {
-        fetch('http://localhost:8000/labels', {
+        const folder = params.folder;
+        const user = localStorage.getItem('user');
+        console.log(folder);
+        fetch('http://localhost:8000/labels/', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({"curr": curr, "labels": labels})
+            body: JSON.stringify({"user": user, "folder": folder ,"curr": curr, "labels": labels})
         })
         .then(response => response.json())
         .then(data => {
@@ -39,7 +44,7 @@ const AnnotationTool = (state) => {
     
     
 
-    const onSave = (code, subcode) => {
+    const onSave = (codes) => {
         // Check for overlapping annotations
         const isOverlapping = labels.some(label => 
             (selected.start >= label.start && selected.start <= label.end) ||
@@ -51,48 +56,47 @@ const AnnotationTool = (state) => {
             alert("Overlap not allowed");
             return;
         }
-        let newlabels  =[...labels, {text: selected.text, start: selected.start, end: selected.end, code: code, subcode: subcode}]
+        const id = labels.length +1;
+        let newlabels  =[...labels, { text: selected.text, start: selected.start, end: selected.end, id:id , codes:codes}]
         setLabels(newlabels);
         postSave(newlabels);
+        setmodalOpen(false);
     }
 
-    const handleTextSelect = (e) => { 
+    const onTextSelect = (e) => { 
         e.preventDefault();
-        const selectedText = window.getSelection().toString();
-        
-        let start = window.getSelection().anchorOffset;
-        let end = window.getSelection().focusOffset;
-        if (start > end) {
-            [start, end] = [end, start];
+        const selection = window.getSelection();
+        if (selection.toString().length > 0) {
+            const range = selection.getRangeAt(0);
+            console.log(range.startOffset, range.endOffset);
+            setSelected( {
+                start: range.startOffset,
+                end: range.endOffset,
+                text: selection.toString(),
+            });
         }
-        
-        setSelected(
-            {
-                text: selectedText,
-                start: start,
-                end: end,
-            }
-        );
-        onOpen();
+        OpenModal();
     };
 
-    const removeLabel = (index) => {    
-        const newLabels = [...labels];
-        newLabels.splice(index, 1);
+    const removeLabel = (index) => {   
+        console.log(index); 
+        console.log(labels, index);
+        let newLabels = labels.filter((label) => label.id !== index);
+        console.log(newLabels);
         setLabels(newLabels);
         postSave(newLabels);
     };
 
-    const _setCurr= ( val) => {
-        val = Math.max(0, Math.min(total - 1, parseInt(val)));
-        setCurr(val);
-    }
-
     useEffect(() => {
         async function fetchData() {
+            const folder = params.folder;
             const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            
+            const queryParams = new URLSearchParams({ user, folder,curr }).toString();
+
             try{
-                const response = await fetch(`http://localhost:8000/text/${curr}`, {
+                const response = await fetch(`http://localhost:8000/text/?${queryParams}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -100,62 +104,22 @@ const AnnotationTool = (state) => {
                 const data = await response.json();
                 setText(data.text);
                 setTotal(data.total);
+                console.log('data.labels');
                 setLabels(data.labels);
-                console.log(data);
+                console.log('caalling');
             }catch(err){
                 console.log(err);
             }
         }
         fetchData();
-        
     },[curr]);
 
-    const renderAnnotations = () => {   
-        if  (labels.length === 0) {
-            return <div>{text}</div>;
-        }
-        const parts = [];
-        let before = 0 ;
-        labels.sort((a, b) => a.start - b.start);
-        labels.forEach(label => {
-            parts.push(<span>{text.substring(before, label.start)}</span>);
-            parts.push(
-                <span key={label.start}>
-                <span className="highlight" style={{ backgroundColor: 'cadetblue' }} >{label.text}</span>
-                <label className='label-annotation' onClick={() => removeLabel(labels.indexOf(label))}> {label.code}: {label.subcode}</label>
-                </span>
-            );
-            before = label.end;
-        });
-        parts.push(<span>{text.substring(before)}</span>);
-    
-        return <div>{parts}</div>;
-       
-    };
 
     return (
         <>
+        <TopPanel total={total} onChange={setCurr}/>
+        <AnnotationContent text={text}  labels={labels}  onDelete={removeLabel} onTextSelect={onTextSelect}/>
         {modalOpen && <Modal selected={selected} onClose={onClose} onSave={onSave}/>}
-        <nav className="navbar">
-            <a href="/dashboard">Dashboard</a>    
-            <button className='modal-save-btn' onClick={()=> _setCurr(curr-1)}> Prev</button>
-            <select onChange={(e) => _setCurr(e.target.value)} value={curr}> 
-            {Array.from({ length: total }, (_, i) => (
-                <option key={i} value={i}>
-                    Message: {i + 1}/{total}
-                </option>
-            ))}
-            </select>
-            <button className='modal-save-btn' onClick={()=> _setCurr(curr+1)}> Next</button>
-        </nav>
-        <div className="container" >
-            <div className="text-container" onMouseUp={handleTextSelect} >
-                {text}
-            </div>
-            <div className="annotation-container">
-                {renderAnnotations()}
-            </div>
-        </div>
         </>
     )
 };
