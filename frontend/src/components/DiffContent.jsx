@@ -2,15 +2,17 @@ import AnnotatedText from "./AnnotatedText";
 
 function DiffContent( {text, label1, label2, onTextSelect} ){ 
 
+   
     return(
         <>
         <div className="container" >
-            <div className="box"  onMouseUp={(e)=>onTextSelect(e)} >
+        <div className="box">
+                <div id='text' ><AnnotatedText text={text} annotations={label1} color="blue" /></div>
+        </div>
+            <div className="box bg-yellow-200"  onMouseUp={(e)=>onTextSelect(e)} >
                 {text}
             </div>
-            <div className="box">
-                <div id='text' ><AnnotatedText text={text} annotations={label1} color="blue" /></div>
-            </div>
+         
         </div>
         <div className="container" >
         <div className="box">

@@ -9,36 +9,36 @@ function AnnotatedText({ text, annotations, color, onClick }) {
         const annotatedParts = [];
         let lastIndex = 0;
 
-        annotations.forEach(({ start, end, id, codes }) => {
+        annotations.forEach(({ start, end, codes }, index) => {
             // Add unannotated text before the current annotation
             if (lastIndex < start) {
-                annotatedParts.push(
-                    <span key={`text-${lastIndex}-${start}`}>
-                        {text.slice(lastIndex, start)}
-                    </span>
-                );
+            annotatedParts.push(
+                <span key={`text-${lastIndex}-${start}`}>
+                {text.slice(lastIndex, start)}
+                </span>
+            );
             }
 
             // Add the annotated part
             annotatedParts.push(
-                <span
-                    key={id}
-                    className={`highlight ${color}`}
-                    id={id}
-                    onClick={() => onClick(id)}
-                >
-                    {text.slice(start, end)}
-                </span>
+            <span
+                key={`annotation-${index}`}
+                className={`highlight ${color}`}
+                id={`annotation-${index}`}
+                onClick={() => onClick(index)}
+            >
+                {text.slice(start, end)}
+            </span>
             );
 
             // Add the annotation label
             annotatedParts.push(
-                <span
-                    key={`label-${id}`}
-                    className="span-label"
-                >
-                    {codes.join(" :: ")}
-                </span>
+            <span
+                key={`label-${index}`}
+                className="span-label"
+            >
+                {codes.join(" :: ")}
+            </span>
             );
 
             lastIndex = end;
@@ -52,7 +52,7 @@ function AnnotatedText({ text, annotations, color, onClick }) {
                 </span>
             );
         }
-
+        console.log(annotatedParts);
         return annotatedParts;
     };
 

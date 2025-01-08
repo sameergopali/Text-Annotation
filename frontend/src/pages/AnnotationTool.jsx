@@ -56,10 +56,10 @@ const AnnotationTool = () => {
             alert("Overlap not allowed");
             return;
         }
-        const id = labels.length +1;
-        let newlabels  =[...labels, { text: selected.text, start: selected.start, end: selected.end, id:id , codes:codes}]
-        setLabels(newlabels);
+        let newlabels  =[...labels, { text: selected.text, start: selected.start, end: selected.end, codes:codes}]
+        newlabels = newlabels.sort((a, b) => a.start - b.start);
         postSave(newlabels);
+        setLabels(newlabels);
         setmodalOpen(false);
     }
 
@@ -79,38 +79,35 @@ const AnnotationTool = () => {
     };
 
     const removeLabel = (index) => {   
-        console.log(index); 
-        console.log(labels, index);
-        let newLabels = labels.filter((label) => label.id !== index);
-        console.log(newLabels);
+        const newLabels = [...labels.slice(0, index), ...labels.slice(index + 1)];
         setLabels(newLabels);
         postSave(newLabels);
     };
 
-    useEffect(() => {
-        async function fetchData() {
-            const folder = params.folder;
-            const token = localStorage.getItem('token');
-            const user = localStorage.getItem('user');
-            
-            const queryParams = new URLSearchParams({ user, folder,curr }).toString();
+    async function fetchData() {
+        const folder = params.folder;
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+        
+        const queryParams = new URLSearchParams({ user, folder,curr }).toString();
 
-            try{
-                const response = await fetch(`http://localhost:8000/text/?${queryParams}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                const data = await response.json();
-                setText(data.text);
-                setTotal(data.total);
-                console.log('data.labels');
-                setLabels(data.labels);
-                console.log('caalling');
-            }catch(err){
-                console.log(err);
-            }
+        try{
+            const response = await fetch(`http://localhost:8000/text/?${queryParams}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            setText(data.text);
+            setTotal(data.total);
+            setLabels(data.labels);
+        }catch(err){
+            console.log(err);
         }
+    }
+
+    useEffect(() => {
+        
         fetchData();
     },[curr]);
 

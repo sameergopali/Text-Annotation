@@ -8,11 +8,10 @@ import overview from '../assets/images/overview.png';
 import text_annot from '../assets/images/text_annot.png';
 import yale from '../assets/images/Yale.png';
 import AnnotationManager from '../components/AnnotationManager';
+import Diffdash from '../components/Diffdash';
 import LabelManager from '../components/LabelsManager';
 import {useAuth}    from '../context/AuthContext';
 import Placeholder from '../pages/Placeholder';
-import DiffTool from './DiffTool';
-
 
 const Dashboard = () => {
     // state to keep track of the selected content
@@ -27,7 +26,8 @@ const Dashboard = () => {
         'Logout': <div>Logout</div>,
         'Placeholder': <Placeholder />,
         'Schema': <LabelManager />,
-        'Diff' : <DiffTool />
+        'Diff' : <Diffdash />
+
     }
 
     const content = contentComponet[selectedContent];
@@ -40,7 +40,7 @@ const Dashboard = () => {
             <div onClick={()=>setSelectedContent('Placeholder')}> <img src={de_iden} alt="Top Panel Image" width="12%"/> De-identification</div>
             <div onClick={()=>setSelectedContent('AnnotationManager')}> <img src={text_annot} alt="Top Panel Image" width="12%"/>Annotation Manager</div>  
             <div onClick={()=>setSelectedContent('Schema')}> <img src={text_annot} alt="Top Panel Image" width="12%"/>Schema</div>  
-            <div onClick={()=>nav('/difftool')}> <img src={text_annot} alt="Top Panel Image" width="12%"/>Annotation Diff</div>  
+            <div onClick={()=>setSelectedContent('Diff')}> <img src={text_annot} alt="Top Panel Image" width="12%"/>Annotation Diff</div>  
             <div onClick={()=>logout()}> <img src={logout_img} alt="Top Panel Image" width="10%"/> Logout</div>
         </div>
         <main className='main-content'>

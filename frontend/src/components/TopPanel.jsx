@@ -23,6 +23,7 @@ const  TopPanel = function({total, onChange}){
     }
     function handleSelectChange(e){
         let value  =validVal(parseInt(e.target.value));
+        console.log("setting value in nav", value);
         onChange(value);
     }
 

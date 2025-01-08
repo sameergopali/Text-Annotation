@@ -36,6 +36,7 @@ const   Modal = ({selected, onClose, onSave }) => {
             const level = i;
             dropdowns.push(
                 <Selection
+                    key={level}
                     options={options}
                     value={selectedCodes[level] || ''}
                     onChange={(e) => handleCodeChange(e, level)}
