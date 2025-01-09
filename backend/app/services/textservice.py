@@ -48,7 +48,7 @@ class TextService:
         curr = int(request.args.get('curr', 0))
         username = request.args.get('user', username)
         folder = request.args.get('folder', 'default_folder')
-        self.text_files = sorted(list((self.base_dir/'txt_files'/folder).glob('*.txt')))
+        self.text_files = list((self.base_dir/'txt_files'/folder).glob('*.txt'))
         logger.info(f"Getting text for {username} in folder {folder}")
         labels  = self._get_labels(username, folder, curr)
     
