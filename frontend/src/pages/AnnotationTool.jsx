@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 import AnnotationContent from '../components/AnnotationContent';
@@ -25,21 +26,18 @@ const AnnotationTool = () => {
         const folder = params.folder;
         const user = localStorage.getItem('user');
         console.log(folder);
-        fetch('http://localhost:8000/labels/', {
-            method: 'POST',
+
+
+        const token = localStorage.getItem('token');
+        let response = await axios.post('http://localhost:8000/labels', { user, folder, curr, labels }, {
             headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({"user": user, "folder": folder ,"curr": curr, "labels": labels})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
+            'Authorization': `Bearer ${token}`
+            }
         });
+        response = await response.json();
+        console.log(response);  
+
+        
     }
     
     
@@ -47,9 +45,9 @@ const AnnotationTool = () => {
     const onSave = (codes) => {
         // Check for overlapping annotations
         const isOverlapping = labels.some(label => 
-            (selected.start >= label.start && selected.start <= label.end) ||
-            (selected.end >= label.start && selected.end <= label.end) ||
-            (selected.start <= label.start && selected.end >= label.end)
+            (selected.start >= label.start && selected.start < label.end) ||
+            (selected.end > label.start && selected.end < label.end) || 
+            (selected.start <= label.start && selected.end > label.end)
         );
 
         if (isOverlapping) {
@@ -63,18 +61,11 @@ const AnnotationTool = () => {
         setmodalOpen(false);
     }
 
-    const onTextSelect = (e) => { 
-        e.preventDefault();
-        const selection = window.getSelection();
-        if (selection.toString().length > 0) {
-            const range = selection.getRangeAt(0);
-            console.log(range.startOffset, range.endOffset);
-            setSelected( {
-                start: range.startOffset,
-                end: range.endOffset,
-                text: selection.toString(),
-            });
-        }
+    const onTextSelect = (selection) => { 
+        setSelected( {
+                start: selection.startOffset,
+                end: selection.endOffset,
+                text: selection.selectedText});
         OpenModal();
     };
 

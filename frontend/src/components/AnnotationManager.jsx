@@ -35,8 +35,8 @@ const AnnotationManager = () => {
         <div className="bg-white rounded-lg shadow">
         <ul className="divide-y">
         {folders.map((folder) => (  
-            <li  key={folder} className="flex justify-between items-center p-4 hover:bg-gray-50">
-            <span className="flex item-center gap-2 text-lg text-black" onClick={()=>{openAnnotationTool(folder)}}><Folder/>{folder}</span> 
+            <li  key={folder} className="flex justify-between items-center p-4 hover:bg-gray-50" onClick={()=>{openAnnotationTool(folder)}}>
+            <span className="flex item-center gap-2 text-lg text-black" ><Folder/>{folder}</span> 
             </li>  )
         )
         }

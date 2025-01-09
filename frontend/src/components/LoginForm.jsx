@@ -22,8 +22,6 @@ function LoginForm(){
         }catch (error) {
             console.error(error);
         }
-        
-    
     }
     return (
             <div className="" >
