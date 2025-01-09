@@ -29,7 +29,7 @@ class TextService:
                 for line in file:
                     logger.debug(f"Line: {line}")
                     labels.append(json.loads(line.strip()))
-                labels.sort(key=lambda x: x['start'], reverse=True)
+                labels.sort(key=lambda x: x['start'])
             logger.info(f"Labels: {labels}")
             return labels
         return []
@@ -75,12 +75,16 @@ class TextService:
         prev_id = 0
         with open(filename, 'w') as file:
             for label in labels:
-                label['id'] = prev_id + 1
-                prev_id += 1
                 json.dump(label, file)
                 file.write('\n')
         return {"message": "Labels saved"}, 200
     
     
     
-     
+    def get_user(self):
+        username = get_jwt_identity()
+        folder = request.args.get('folder', 'default_folder')
+        logger.info(f"Getting user {username} in folder {folder}")
+        folders = [folder.name for folder in (self.base_dir/'labels'/f'{folder}').glob('*') if folder.is_dir()]
+        return {"users": folders} 
+        
