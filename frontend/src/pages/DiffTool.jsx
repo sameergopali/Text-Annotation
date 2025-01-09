@@ -49,14 +49,18 @@ function DiffTool() {
 
     // Fetch users list
     async function fetchUsers() {   
+        const folder = params.folder;
+        const queryParams = new URLSearchParams({ folder }).toString();
+        
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`http://localhost:8000/users/`, {
+            const response = await fetch(`http://localhost:8000/users/?${queryParams}`, {
                 headers: { 
                     'Authorization': `Bearer ${token}`
                 }
             });
             const data = await response.json();
+            console.log(data.users);
             setUsers(data.users);
         } catch (err) {    
             console.log(err);

@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import text_annot from '../assets/images/text_annot.png';
 
 const Diffdash = () => {
-    const [finalized, setfinalized ]= useState(false);
-    const [draft, setDraft] = useState(false);
     const  [folders, setfolders] = useState([]);
 
     useEffect(() => {   

@@ -85,6 +85,8 @@ class TextService:
         username = get_jwt_identity()
         folder = request.args.get('folder', 'default_folder')
         logger.info(f"Getting user {username} in folder {folder}")
-        folders = [folder.name for folder in (self.base_dir/'labels'/f'{folder}').glob('*') if folder.is_dir()]
+        logger.debug(list((self.base_dir/'labels'/f"{folder}").glob('*')))
+        folders = [folder.name for folder in (self.base_dir/'labels'/f"{folder}").glob('*') if folder.is_dir()]
+        logger.debug(f"Users: {folders}")
         return {"users": folders} 
         
