@@ -8,11 +8,9 @@ const UserComparisonSelector = ({users,setUser1, setUser2}) => {
 
   return (
     <div className="w-full  max-w-2xl">
-      <div className="p-6">
+      <div className="p-1">
         <div className="flex flex-col sm:flex-row gap-4  justify-between">
-          {/* Left user selector */}
           <div className="flex-1">
-            <label className="block text-sm font-medium mb-2">User 1</label>
             <select
               onChange={(e) => setUser1(e.target.value)}
               className="w-full p-2 border rounded-md bg-white"
@@ -38,7 +36,6 @@ const UserComparisonSelector = ({users,setUser1, setUser2}) => {
 
           {/* Right user selector */}
           <div className="flex-1">
-            <label className="block text-sm font-medium mb-2">User 2</label>
             <select
               onChange={(e) => setUser2(e.target.value)}
               className="w-full p-2 border rounded-md bg-white"

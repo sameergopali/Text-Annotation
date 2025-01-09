@@ -1,4 +1,4 @@
-function AnnotatedText({ text, annotations, color, onClick }) {
+function AnnotatedText({ text, annotations, color = 'blue', onClick }) {
     // Function to process text into annotated parts
     console.log('annotations text', annotations);
     const renderAnnotatedText = () => {
@@ -23,7 +23,7 @@ function AnnotatedText({ text, annotations, color, onClick }) {
             annotatedParts.push(
             <span
                 key={`annotation-${index}`}
-                className={`highlight ${color}`}
+                className={`bg-${color}-200 text-${color}-800 px-1 rounded cursor-pointer border border-${color}-400 hover:font-bold transition duration-300 ease-in-out`}
                 id={`annotation-${index}`}
                 onClick={() => onClick(index)}
             >
@@ -35,7 +35,7 @@ function AnnotatedText({ text, annotations, color, onClick }) {
             annotatedParts.push(
             <span
                 key={`label-${index}`}
-                className="span-label"
+                className="ml-2 text-xs font-semibold text-white bg-teal-500 px-2 py-1 rounded-full border border-teal-500 shadow-md"
             >
                 {codes.join(" :: ")}
             </span>
@@ -47,9 +47,9 @@ function AnnotatedText({ text, annotations, color, onClick }) {
         // Add any remaining unannotated text
         if (lastIndex < text.length) {
             annotatedParts.push(
-                <span key={`text-${lastIndex}-end`}>
-                    {text.slice(lastIndex)}
-                </span>
+            <span key={`text-${lastIndex}-end`}>
+                {text.slice(lastIndex)}
+            </span>
             );
         }
         console.log(annotatedParts);

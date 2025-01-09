@@ -16,6 +16,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-base text-slate-900 bg-white font-sans;
+    
+  }
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -366,15 +373,7 @@ body {
 }
 
 
-.fancy-button:hover {
-  background: linear-gradient(45deg, #2f86eb, #34b3f1);
-}
 
-.fancy-button svg {
-  width: 16px;
-  height: 16px;
-  fill: white;
-}
 
 /* Style for the dialog box */
 #dialog {

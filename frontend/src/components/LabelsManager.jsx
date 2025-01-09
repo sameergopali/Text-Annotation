@@ -33,7 +33,7 @@ const LabelManager= () => {
                    
                 {labels.map((label) => (
                      
-                    <li  key={label.id} className="flex justify-between items-center p-4 hover:bg-gray-50">
+                    <li  key={label.id} className="lex justify-between items-center p-4 hover:bg-gray-300 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 rounded-lg">
                         <span className="text-lg text-black">{label.filename}</span>
                         <div className="flex gap-3">
                         <button onClick={() => {handleEdit(label.filename)}}

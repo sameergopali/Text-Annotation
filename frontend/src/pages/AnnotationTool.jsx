@@ -106,7 +106,9 @@ const AnnotationTool = () => {
     return (
         <>
         <TopPanel total={total} onChange={setCurr}/>
-        <AnnotationContent text={text}  labels={labels}  onDelete={removeLabel} onTextSelect={onTextSelect}/>
+        <div className="flex items-center justify-center pt-4 ">
+            <AnnotationContent text={text} labels={labels} onDelete={removeLabel} onTextSelect={onTextSelect}/>
+        </div>
         {modalOpen && <Modal selected={selected} onClose={onClose} onSave={onSave}/>}
         </>
     )

@@ -10,15 +10,16 @@ import yale from '../assets/images/Yale.png'
 const TopPanelNav = function({children}){
     const navigate=useNavigate();
     return (
-        <div className="top-panel">
-            <img src={home} alt="home_logo" width="40px" onClick={()=>{navigate('/dashboard')}}/> 
-            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<img src={text_annot} alt="text_annot" width="2%"/>&nbsp;&nbsp;
-            <img src={ysom} alt="ysom" width="1.5%"/>&nbsp;&nbsp;
-            <img src={yale} alt="yale" width="2%"/>
-            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <div className="flex items-center p-4 bg-green-400">
+            <img src={home} alt="home_logo" className="w-10 cursor-pointer" onClick={() => { navigate('/dashboard') }} />
+            <span className="mx-4">|</span>
+            <img src={text_annot} alt="text_annot" className="w-8 mx-2" />
+            <img src={ysom} alt="ysom" className="w-6 mx-2" />
+            <img src={yale} alt="yale" className="w-8 mx-2" />
+            <span className="mx-4">|</span>
             {children}
         </div>
-        );
+    );
 }
 
 export default TopPanelNav;

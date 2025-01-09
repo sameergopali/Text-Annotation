@@ -181,3 +181,7 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+*.bak
+*.cache
+backend/app/data/labels/*
+backend/app/data/txt_files/*

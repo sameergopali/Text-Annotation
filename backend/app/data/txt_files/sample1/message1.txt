@@ -1,3 +1,0 @@
-Thi is a random long text message file. This is the continuation of the text message. 
-A Long message is in form of message: njkn!,;''""
-that spans multiple     lines and contains various pieces of information. It is meant to serve as an example of how text can be extended and formatted within a file.
