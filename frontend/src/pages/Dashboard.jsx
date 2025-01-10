@@ -10,6 +10,7 @@ import yale from '../assets/images/Yale.png';
 import AnnotationManager from '../components/AnnotationManager';
 import Diffdash from '../components/Diffdash';
 import LabelManager from '../components/LabelsManager';
+import MergedAnnotatedText from '../components/MergedAnnotatedText';
 import {useAuth}    from '../context/AuthContext';
 import Placeholder from '../pages/Placeholder';
 
@@ -26,7 +27,8 @@ const Dashboard = () => {
         'Logout': <div>Logout</div>,
         'Placeholder': <Placeholder />,
         'Schema': <LabelManager />,
-        'Diff' : <Diffdash />
+        'Diff' : <Diffdash />,
+        'TextAnnotator': <Placeholder/>
 
     }
 
@@ -42,7 +44,7 @@ const Dashboard = () => {
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Placeholder' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Placeholder')}>
                         <img src={overview} alt="Overview" className='w-6 h-6 mr-2' /> Overview
                     </div>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Placeholder' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Placeholder')}>
+                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'TextAnnotator' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('TextAnnotator')}>
                         <img src={data_extraction} alt="Data Extraction" className='w-6 h-6 mr-2' /> Data Extraction
                     </div>
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Placeholder' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Placeholder')}>
