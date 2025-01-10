@@ -108,7 +108,6 @@
                 {"name": "Generalinformation", "options": []},
                 {"name": "Diagnostics", "options": []},
                 {"name": "Drugs", "options": []},
-                {"name": "CareCoordination", "options": []},
                 {"name": "Instruction", "options": []}
             ]
         },
