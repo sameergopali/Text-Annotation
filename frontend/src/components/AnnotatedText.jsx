@@ -1,4 +1,7 @@
 function AnnotatedText({ text, annotations, color = 'blue', onClick }) {
+
+    
+
     // Function to process text into annotated parts
     console.log('annotations text', annotations);
     const renderAnnotatedText = () => {

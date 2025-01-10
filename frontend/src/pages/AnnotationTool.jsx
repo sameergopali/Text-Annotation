@@ -34,10 +34,6 @@ const AnnotationTool = () => {
             'Authorization': `Bearer ${token}`
             }
         });
-        response = await response.json();
-        console.log(response);  
-
-        
     }
     
     
@@ -70,6 +66,7 @@ const AnnotationTool = () => {
     };
 
     const removeLabel = (index) => {   
+
         const newLabels = [...labels.slice(0, index), ...labels.slice(index + 1)];
         setLabels(newLabels);
         postSave(newLabels);
