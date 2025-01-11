@@ -1,18 +1,17 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import data_extraction from '../assets/images/data_extraction.png';
-import de_iden from '../assets/images/de_iden.png';
-import logout_img from '../assets/images/logout.png';
-import overview from '../assets/images/overview.png';
-import text_annot from '../assets/images/text_annot.png';
-import yale from '../assets/images/Yale.png';
-import AnnotationManager from '../components/AnnotationManager';
-import Diffdash from '../components/Diffdash';
-import LabelManager from '../components/LabelsManager';
-import MergedAnnotatedText from '../components/MergedAnnotatedText';
-import {useAuth}    from '../context/AuthContext';
-import Placeholder from '../pages/Placeholder';
+import data_extraction from '../../assets/images/data_extraction.png';
+import de_iden from '../../assets/images/de_iden.png';
+import logout_img from '../../assets/images/logout.png';
+import overview from '../../assets/images/overview.png';
+import text_annot from '../../assets/images/text_annot.png';
+import yale from '../../assets/images/Yale.png';
+import {useAuth}    from '../../context/AuthContext';
+import Placeholder from '../Placeholder';
+import AnnotationManager from './AnnotationManager';
+import Diffdash from './Diffdash';
+import LabelManager from './LabelsManager'; 
 
 const Dashboard = () => {
     // state to keep track of the selected content

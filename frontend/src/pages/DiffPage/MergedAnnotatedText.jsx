@@ -86,7 +86,7 @@ function MergedAnnotation({text, labels, onClick}) {
 
         {/* Stacked highlights with blend modes */}
         {segment.labels.map((label, labelIndex) => 
-        {   
+        {
             return (
             <span
             key={labelIndex}

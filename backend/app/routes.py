@@ -10,6 +10,7 @@ from flask_jwt_extended import jwt_required
 def get_routes(text_service, login_service, serve_react):    
     return {
         '/': {'methods': ['GET'], 'function': serve_react  },
+        '/total/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_total)},
         '/login': {'methods': ['POST'], 'function': login_service.login},
         '/text/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_text)},
         '/labels': {'methods': ['POST'], 'function': jwt_required()(text_service.save_labels)},

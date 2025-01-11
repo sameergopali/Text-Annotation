@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {Folder } from 'lucide-react'
 import { useNavigate } from "react-router-dom";
 
-import text_annot from '../assets/images/text_annot.png';
+import text_annot from '../../assets/images/text_annot.png';
 
 
 const Diffdash = () => {

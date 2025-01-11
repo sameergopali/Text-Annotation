@@ -10,6 +10,13 @@ class TextService:
       
 
         
+    def get_total(self):
+        username = get_jwt_identity()
+        folder = request.args.get('folder', 'default_folder')
+        logger.info(f"Getting total for {username} in folder {folder}")
+        self.text_files = list((self.base_dir/'txt_files'/folder).glob('*.txt'))
+        return {"total": len(self.text_files)}
+    
     def get_folders(self):
         username = get_jwt_identity()
         logger.info(f"Getting folders for {username}")
@@ -50,9 +57,7 @@ class TextService:
         folder = request.args.get('folder', 'default_folder')
         self.text_files = list((self.base_dir/'txt_files'/folder).glob('*.txt'))
         self.text_files.sort(key=lambda x: int(x.stem.split('message')[1]))
-        logger.info(f"Getting text for {username} in folder {folder}")
-        labels  = self._get_labels(username, folder, curr)
-    
+        
         if curr >= len(self.text_files):
             return {"text": "No more text files", "curr": curr}
         file_path = self.text_files[curr]
@@ -60,7 +65,7 @@ class TextService:
         with open(file_path, 'r') as file:
             text = file.read()
         
-        return {"text": text, "curr": curr, "labels": labels, "total": len(self.text_files)}
+        return {"text": text, "curr": curr}
     
     def save_labels(self):
         data = request.get_json()

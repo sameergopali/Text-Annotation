@@ -2,12 +2,13 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 
-import AnnotatedText from '../components/AnnotatedText';
-import MergedAnnotation from '../components/MergedAnnotatedText';
-import Modal from "../components/Modal";
-import SnapTextSelect from '../components/SnapTextSelect';
-import TopPanel from "../components/TopPanel" ;
-import UserComparisonSelector from '../components/UserSelector';
+import AnnotatedText from '../../components/AnnotatedText';
+import Modal from "../../components/Modal";
+import SnapTextSelect from '../../components/SnapTextSelect';
+import TopPanel from "../../components/TopPanel" ;
+import UserComparisonSelector from '../../components/UserSelector';
+import { useFetch, usePost } from '../../hooks/useFetch';
+import MergedAnnotation from './MergedAnnotatedText';
 
 function DiffTool() {
     const [curr, setCurr] = useState(0);
@@ -95,26 +96,12 @@ function DiffTool() {
     }
 
     // Fetch users list
-    async function fetchUsers() {   
-        const folder = params.folder;
-        const queryParams = new URLSearchParams({ folder }).toString();
-        
-        const token = localStorage.getItem('token');
-        try {
-            const response = await fetch(`http://localhost:8000/users/?${queryParams}`, {
-                headers: { 
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            console.log(response);
-            const data = await response.json();
-            
-            console.log(data.users);
-            setUsers(data.users);
-        } catch (err) {    
-            console.log(err);
-        }   
-    }           
+    useFetch({url:'http://localhost:8000/users/', 
+        dependencies: [],
+        queryparams: { folder: params.folder },
+        onSuccess: (data) => setUsers(data.users)})
+        ;
+      
 
     const onDelete = async (user, index) => {
         const newLabels = [...labels[user].slice(0, index), ...labels[user].slice(index + 1)];
@@ -128,42 +115,28 @@ function DiffTool() {
         await fetchLabels(user);
     }
 
-    async function fetchData() {
-        const folder = params.folder;
-        const user = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        const queryParams = new URLSearchParams({ user, folder, curr }).toString();
-        
-        try {
-            const response = await fetch(`http://localhost:8000/text/?${queryParams}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            const data = await response.json();
+    // Fetch text data
+    useFetch({ url:'http://localhost:8000/text/',
+        dependencies: [curr],
+        queryparams: { folder: params.folder, curr, user: user1 },
+        onSuccess: (data) => {
             setText(data.text);
             setTotal(data.total);
-        } catch (err) {
-            console.log(err);
         }
-    }
+    });
 
-    // Initial data and users fetch
-    useEffect(() => {
-        fetchData();
-        fetchUsers();
-    }, []);
 
-    // Fetch text when curr changes
-    useEffect(() => {
-        fetchData();
-    }, [curr]);
 
     // Fetch labels when users or curr changes
-    useEffect(() => {
-        if (user1) fetchLabels(user1);
-        if (user2) fetchLabels(user2);
-    }, [user1, user2, curr]);
+    useFetch({ url:'http://localhost:8000/labels/',
+        dependencies: [user1, user2, curr],
+        queryparams: { folder: params.folder, curr, user: user1 },
+        onSuccess: (data) => setLabels(prevLabels => ({
+            ...prevLabels,
+            [user1]: data.labels
+        }))
+    }); 
+   
 
     // Handlers for user selection
     const handleUser1Change = (u1) => {
@@ -224,7 +197,7 @@ function DiffTool() {
                     </div>
                 </div>
             </div>
-
+            
             {modalOpen && <Modal selected={selecedtext} onClose={onClose} onSave={onSave}/>}
         </>
     );

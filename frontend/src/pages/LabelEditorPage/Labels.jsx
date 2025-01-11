@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Plus,Save } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
-import EditableElement from '../components/EditableElement';
-import LabelItem from '../components/LabelItem';    
-import TopPanelNav from '../components/TopPanelNav';
+import TopPanelNav from '../../components/TopPanelNav';
+import EditableElement from './EditableElement';
+import LabelItem from './LabelItem';    
 
 const Labels = () => { 
     const params = useParams();
