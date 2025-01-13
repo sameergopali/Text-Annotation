@@ -9,6 +9,7 @@ class App:
     def __init__(self, config  ):
         self.app = Flask(__name__, static_folder="static/react/build", static_url_path="/")
         self.app.config['JWT_SECRET_KEY']= 'super-secret'
+        self.app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
         JWTManager(self.app)
         CORS(self.app)
         self.config = config  

@@ -5,7 +5,6 @@ const useFetch = ({
     url,
     onSuccess = null,
     queryparams={}, 
-    body = null,
     options={}, 
     dependencies = []
     }) => {
@@ -56,16 +55,19 @@ const useFetch = ({
 
 
 const usePost = ({url}) => { 
+    console.log('usePost', url);
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const postData = async ({body}) => {
+    const postData = async ({body, options={}}) => {
         try {
             setLoading(true);
+            console.log('posting data,',url);
             let token = localStorage.getItem('token');
-            let result = await axios.post('http://localhost:8000/labels', body, {
+            let result = await axios.post(url, body, {
                 headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                ...options.headers
                 }
             });
             setData(result);

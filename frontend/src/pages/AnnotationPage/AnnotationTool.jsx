@@ -26,7 +26,7 @@ const AnnotationTool = () => {
 
     const codeSelect =  useDialog();  
     const deleteConfirm = useDialog();
-    const {postData}= usePost({url:"http://localhost:8000/labels/"});
+    const {postData}= usePost({url:"http://localhost:8000/labels"});
 
 
     useFetch({ 

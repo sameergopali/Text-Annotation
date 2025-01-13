@@ -133,4 +133,27 @@ class TextService:
         disagreements = SegmentProvider.find_disagreements(segments, matching_criteria)
         return {"disagreements": disagreements}
     
-   
+    def import_file(self):
+        data = request.files['file']
+        logger.info(f"Data: {data}")
+        if 'file' not in request.files:
+            return {"error": "No file part in the request"}, 400
+
+        uploaded_file = request.files['file']  # Access the file
+        if uploaded_file.filename == '':
+            return {"error": "No file selected"}, 400
+        file_content = uploaded_file.read().decode('utf-8') 
+        logger.info([folder_name for folder_name in (self.base_dir/'txt_files').glob('*') if folder_name.is_dir()])
+        ind = max(int(folder.name.split('sample')[1]) for folder in (self.base_dir/'txt_files').glob('sample*') if folder.is_dir())
+        new_folder_name = f'sample{ind+1}'
+        save_dir = self.base_dir/'txt_files'/new_folder_name
+        save_dir.mkdir(parents=True, exist_ok=True)
+        
+        for i, line in enumerate(file_content.split('\n')):
+            filename = save_dir / f'message{i}.txt'
+            with open(filename, 'w') as file:
+                file.write(line)
+ 
+        
+        return {"message": "File imported"}, 200
+    

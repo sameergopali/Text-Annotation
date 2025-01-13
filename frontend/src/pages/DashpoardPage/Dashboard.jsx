@@ -60,7 +60,7 @@ const Dashboard = () => {
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Diff')}>
                         <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Annotation Diff
                     </div>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Import')}>
+                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Import' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Import')}>
                         <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Import File
                     </div>
                     <div className='flex items-center cursor-pointer hover:bg-green-600 p-2 rounded' onClick={() => logout()}>
