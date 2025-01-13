@@ -16,5 +16,9 @@ def get_routes(text_service, login_service, serve_react):
         '/labels': {'methods': ['POST'], 'function': jwt_required()(text_service.save_labels)},
         '/folders/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_folders)},
         '/labels/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_labels)},
-        '/users/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_user)}
+        '/users/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_user)},
+        '/segments/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_segments)},
+        '/agreements/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_agreements)},  
+        '/disagreements/': {'methods': ['GET'], 'function': jwt_required()(text_service.get_disagreements)},
+        '/import': {'methods': ['POST'], 'function': jwt_required()(text_service.import_file)},
     }

@@ -7,13 +7,13 @@ const UserComparisonSelector = ({users,setUser1, setUser2}) => {
 
 
   return (
-    <div className="w-full  max-w-2xl">
+    <div >
       <div className="p-1">
         <div className="flex flex-col sm:flex-row gap-4  justify-between">
           <div className="flex-1">
             <select
               onChange={(e) => setUser1(e.target.value)}
-              className="w-full p-2 border rounded-md bg-white"
+              className="w-full p-1 border rounded-md bg-white"
             >
               <option value="">Select user...</option>
               {users.map(user => (
@@ -38,7 +38,7 @@ const UserComparisonSelector = ({users,setUser1, setUser2}) => {
           <div className="flex-1">
             <select
               onChange={(e) => setUser2(e.target.value)}
-              className="w-full p-2 border rounded-md bg-white"
+              className="w-full p-1 border rounded-md bg-white"
             >
               <option value="">Select user...</option>
               {users.map(user => (

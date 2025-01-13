@@ -2,12 +2,28 @@ from pathlib import Path
 from loguru import logger   
 from flask import request
 from flask_jwt_extended import get_jwt_identity
+from .segment import SegmentProvider
 import json
 
 class TextService:
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent / 'data'
       
+    def _get_textSegments(self, curr, users, folder, matching_criteria):
+        text = self._get_text(curr, folder)
+        labels ={user:self._get_labels(user, folder, curr) for user in users}
+        logger.info(f"Labels: {labels}")
+        segments = SegmentProvider.get_text_segments(text, labels, matching_criteria)
+        return segments    
+    
+    def get_segments(self):
+        curr = int(request.args.get('curr', 0))
+        folder = request.args.get('folder', 'default_folder')
+        users = request.args.get('users', [])
+        matching_criteria = request.args.get('matchingCriteria', 'exact')  
+        logger.info(f"Users == {users}")
+        segments = self._get_textSegments(curr, users.split(','), folder, matching_criteria)
+        return {"segments": segments}
 
         
     def get_total(self):
@@ -48,23 +64,24 @@ class TextService:
         folder = request.args.get('folder', 'default_folder')
         labels  = self._get_labels(username, folder, curr)
         return {"labels": labels}
+    
+    def _get_text(self, curr, folder):
+        filename = f"message{curr}.txt"
+        self.text_files = list((self.base_dir/'txt_files'/folder).glob('message*.txt'))
+        if curr >= len(self.text_files):
+            return {"text": "No more text files", "curr": curr}
+        file_path = self.base_dir/'txt_files'/folder/filename
+        logger.info(f"Reading file: {file_path}")
+        with open(file_path, 'r') as file:
+            text = file.read()
+        return text
         
     def get_text(self):
         username = get_jwt_identity()  
         logger.info(f"username: {username}")
         curr = int(request.args.get('curr', 0))
-        username = request.args.get('user', username)
         folder = request.args.get('folder', 'default_folder')
-        self.text_files = list((self.base_dir/'txt_files'/folder).glob('*.txt'))
-        self.text_files.sort(key=lambda x: int(x.stem.split('message')[1]))
-        
-        if curr >= len(self.text_files):
-            return {"text": "No more text files", "curr": curr}
-        file_path = self.text_files[curr]
-        logger.info(f"Reading file: {file_path}")
-        with open(file_path, 'r') as file:
-            text = file.read()
-        
+        text = self._get_text(curr, folder)
         return {"text": text, "curr": curr}
     
     def save_labels(self):
@@ -78,7 +95,6 @@ class TextService:
         save_dir =self.base_dir/'labels' /f'{folder}'/ f"{username}"
         save_dir.mkdir(parents=True, exist_ok=True) 
         filename = save_dir / f"message{curr}.jsonl"
-        prev_id = 0
         with open(filename, 'w') as file:
             for label in labels:
                 json.dump(label, file)
@@ -96,3 +112,25 @@ class TextService:
         logger.debug(f"Users: {folders}")
         return {"users": folders} 
         
+    def get_agreements(self):
+        curr = int(request.args.get('curr', 0))
+        folder = request.args.get('folder', 'default_folder')
+        users = request.args.get('users', [])
+        matching_criteria = request.args.get('matching_criteria', 'exact')
+        logger.info(f"Users == {users}")
+        text = self._get_text(curr, folder)
+        segments = self._get_textSegments(curr, users.split(','), folder, matching_criteria)
+        agreements = SegmentProvider.find_agreements(text,segments, matching_criteria)
+        return {"agreements": agreements}
+
+    def get_disagreements(self):
+        curr = int(request.args.get('curr', 0))
+        folder = request.args.get('folder', 'default_folder')
+        users = request.args.get('users', [])
+        matching_criteria = request.args.get('matchingCriteria', 'exact')
+        logger.info(f"Users == {users}")
+        segments = self._get_textSegments(curr, users.split(','), folder, matching_criteria)
+        disagreements = SegmentProvider.find_disagreements(segments, matching_criteria)
+        return {"disagreements": disagreements}
+    
+   

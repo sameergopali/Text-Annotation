@@ -8,6 +8,7 @@ import overview from '../../assets/images/overview.png';
 import text_annot from '../../assets/images/text_annot.png';
 import yale from '../../assets/images/Yale.png';
 import {useAuth}    from '../../context/AuthContext';
+import Import from '../ImportPage/Import';  
 import Placeholder from '../Placeholder';
 import AnnotationManager from './AnnotationManager';
 import Diffdash from './Diffdash';
@@ -27,7 +28,8 @@ const Dashboard = () => {
         'Placeholder': <Placeholder />,
         'Schema': <LabelManager />,
         'Diff' : <Diffdash />,
-        'TextAnnotator': <Placeholder/>
+        'TextAnnotator': <Placeholder/>,
+        'Import': <Import />
 
     }
 
@@ -57,6 +59,9 @@ const Dashboard = () => {
                     </div>
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Diff')}>
                         <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Annotation Diff
+                    </div>
+                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Import')}>
+                        <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Import File
                     </div>
                     <div className='flex items-center cursor-pointer hover:bg-green-600 p-2 rounded' onClick={() => logout()}>
                         <img src={logout_img} alt="Logout" className='w-6 h-6 mr-2' /> Logout

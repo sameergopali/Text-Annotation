@@ -1,64 +1,61 @@
-import { useState, createContext, useContext} from "react";
+import { useState, createContext, useContext } from "react";
 
-const TabsContext = createContext();  
+const TabsContext = createContext();
 
-const Tabs = ({children, defaultIndex = 0}) => {
-
+const Tabs = ({ children, defaultIndex = 0 }) => {
     const [activeTab, setActiveTab] = useState(defaultIndex);
 
     const value = {
         activeTab,
         setActiveTab
-    }
+    };
 
     return (
         <TabsContext.Provider value={value}>
-            <div className="flex flex-col">
-                <div className="flex">
+                <div className="flex flex-col">
                     {children}
                 </div>
-            </div>
         </TabsContext.Provider>
     );
-}
+};
 
-const TabList = ({children}) => {
+const TabList = ({ children }) => {
     return (
-        <div className="flex">
+        <div className="flex space-x-4">
             {children}
         </div>
     );
-}
+};
 
-const Tab = ({children, index}) => {    
-    const {activeTab, setActiveTab} = useContext(TabsContext);
+const Tab = ({ children, index }) => {
+    const { activeTab, setActiveTab } = useContext(TabsContext);
 
     return (
-        <div 
-            className={`cursor-pointer px-4 py-2 ${activeTab === index ? 'bg-gray-200' : 'bg-gray-100'}`}
+        <div
+            className={`cursor-pointer  px-4 py-2 ${activeTab === index ? 'bg-gray-200' : 'bg-gray-100'}`}
             onClick={() => setActiveTab(index)}
         >
             {children}
         </div>
     );
-}
+};
 
-const TabPanels = ({children}) => {
+const TabPanels = ({ children }) => {
     return (
-        <div>
+        <div className="flex flex-col mt-4 p-4 border rounded-lg ">
             {children}
         </div>
     );
-}
-const TabPanel = ({children, index}) => {   
-    const {activeTab} = useContext(TabsContext);
+};
+
+const TabPanel = ({ children, index }) => {
+    const { activeTab } = useContext(TabsContext);
 
     return (
         <div className={activeTab === index ? 'block' : 'hidden'}>
             {children}
         </div>
     );
+};
 
-}
-
-export {Tabs, TabList, Tab, TabPanels, TabPanel};   
+export { Tabs, TabList, Tab, TabPanels, TabPanel };
