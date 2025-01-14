@@ -32,7 +32,7 @@ const useFetch = ({
                 const fetchOptions = {
                     headers
                   };
-
+                console.log('fetching data', modifiedUrl);
                 let result = await fetch(modifiedUrl, fetchOptions);
                 result = await result.json();
                 console.log(result);
@@ -56,10 +56,16 @@ const useFetch = ({
 
 const usePost = ({url}) => { 
     console.log('usePost', url);
-    const [data, setData] = useState(null);
+
+    const [success, setSuccess] = useState(null); 
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const postData = async ({body, options={}}) => {
+    const reset = () => {   
+        setSuccess(null);
+        setError(null);
+        setLoading(false);
+    }
+    const postData = async ({body, options={}, onSuccess}) => {
         try {
             setLoading(true);
             console.log('posting data,',url);
@@ -70,7 +76,7 @@ const usePost = ({url}) => {
                 ...options.headers
                 }
             });
-            setData(result);
+            setSuccess(result.data);
         } catch (err) {
             setError(err);
             console.log(err);
@@ -80,6 +86,6 @@ const usePost = ({url}) => {
         }
     };
 
-    return {loading, data, error ,postData };
+    return {loading, error , success,reset, postData };
 }
 export { usePost, useFetch };

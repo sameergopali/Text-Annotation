@@ -3,15 +3,17 @@ import {useNavigate} from 'react-router-dom';
 
 import data_extraction from '../../assets/images/data_extraction.png';
 import de_iden from '../../assets/images/de_iden.png';
+import export_img from '../../assets/images/export.png';
 import logout_img from '../../assets/images/logout.png';
 import overview from '../../assets/images/overview.png';
 import text_annot from '../../assets/images/text_annot.png';
 import yale from '../../assets/images/Yale.png';
 import {useAuth}    from '../../context/AuthContext';
-import Import from '../ImportPage/Import';  
+import { featureFlags } from '../../hooks/useFlags';
 import Placeholder from '../Placeholder';
 import AnnotationManager from './AnnotationManager';
 import Diffdash from './Diffdash';
+import Import from './Import';  
 import LabelManager from './LabelsManager'; 
 
 const Dashboard = () => {
@@ -55,13 +57,13 @@ const Dashboard = () => {
                         <img src={text_annot} alt="Annotation Manager" className='w-6 h-6 mr-2' /> Annotation Manager
                     </div>
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Schema' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Schema')}>
-                        <img src={text_annot} alt="Schema" className='w-6 h-6 mr-2' /> Schema
+                        <img src={text_annot} alt="Schema" className='w-6 h-6 mr-2' /> Codebook
                     </div>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Diff')}>
+                    {featureFlags.experimentalUI && <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Diff')}>
                         <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Annotation Diff
-                    </div>
+                    </div>}
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Import' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Import')}>
-                        <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Import File
+                        <img src={export_img} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Import File
                     </div>
                     <div className='flex items-center cursor-pointer hover:bg-green-600 p-2 rounded' onClick={() => logout()}>
                         <img src={logout_img} alt="Logout" className='w-6 h-6 mr-2' /> Logout

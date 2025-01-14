@@ -21,7 +21,7 @@ class LoginService:
         password = data.get('password')
         user =  LoginService().get_user(username)
         if user and user.password == password:
-            access_token = create_access_token(identity=username, expires_delta=datetime.timedelta(days=30))
+            access_token = create_access_token(identity=username, expires_delta=False)
             return {"access_token": access_token}, 200
         else:
             return {"message": "Invalid username or password"}, 401

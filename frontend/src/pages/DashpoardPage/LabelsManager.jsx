@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LabelManager= () => {
     const [labels, setLabels] = useState([
-        { id: 1, filename: "Product Categories" }
+        { id: 1, filename: "EPPCMiner" }
        
     ]);
     const navigate = useNavigate(); 
@@ -15,7 +15,7 @@ const LabelManager= () => {
         setLabels([...labels, { id: labels.length + 1, filename: "New Label" }]);
     };
     const handleEdit = (filename) => {
-        navigate(`/labels/${filename}`);
+        navigate(`/codebook/${filename}`);
     };
     return(
         <div className="w-full   p-6">
@@ -42,13 +42,13 @@ const LabelManager= () => {
                         > 
                         <Edit size={18} />
                         </button>
-                        <button 
+                        {/* <button 
                             className="p-2 text-red-600 hover:bg-red-50 rounded-full"
                             title="Delete"
                             onClick={() => handleDelete(label.id)}
                         >
                         <Trash2 size={18} />
-                        </button>
+                        </button> */}
                         </div>
                     </li>
                     ))} 

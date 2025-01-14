@@ -24,17 +24,37 @@ function LoginForm(){
         }
     }
     return (
-            <div className="" >
-            <form  onSubmit={handleSubmit} className='login-form' >
-                <div className="flex-container">
-                    <h1>Login</h1>
-                    <input type="text" className="login-input"  name="username"  value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)} required/>
-                    <input type="password" className="login-input" name="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
-                    <button type="submit" >Login</button>
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+                <div className="flex flex-col space-y-4">
+                    <h1 className="text-2xl font-bold text-center">Login</h1>
+                    <input 
+                        type="text" 
+                        className="bg-white p-2 border border-gray-300 rounded"  
+                        name="username"  
+                        value={username} 
+                        placeholder="Username" 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        required
+                    />
+                    <input 
+                        type="password" 
+                        className="p-2 border border-gray-300 rounded" 
+                        name="password" 
+                        placeholder="Password" 
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        required
+                    />
+                    <button 
+                        type="submit" 
+                        className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+                    >
+                        Login
+                    </button>
                 </div>
             </form>
-            </div>
-
+        </div>
     )
 }
 

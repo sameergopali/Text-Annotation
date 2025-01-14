@@ -23,6 +23,8 @@ const AnnotationTool = () => {
     const [text, setText] = useState();
     const [total, setTotal] = useState(0);
     const [curr, setCurr] = useState(0);
+    const [codebook, setCodebook] = useState([]);
+    
 
     const codeSelect =  useDialog();  
     const deleteConfirm = useDialog();
@@ -51,6 +53,15 @@ const AnnotationTool = () => {
         onSuccess: (data) => {
             console.log('labels', data.labels);
             setLabels(data.labels)
+        }
+    });
+
+    useFetch({  
+        url:"http://localhost:8000/codebook/",
+        queryparams:{filename:'EPPCMiner'},
+        onSuccess: (data) => {
+            console.log('data', data);
+            setCodebook({options:data.codebook||[]});
         }
     });
 
@@ -99,7 +110,7 @@ const AnnotationTool = () => {
                     })}/>
         </div>
         <ConfirmDialog isOpen={codeSelect.isOpen} onClose={codeSelect.closeDialog} onSubmit={onSave} data={codeSelect.dialogData}>
-            <Modal selected={codeSelect.dialogData} onChange={codeSelect.setDialogData}  />
+            <Modal selected={codeSelect.dialogData} onChange={codeSelect.setDialogData}  optionsData={codebook} />
         </ConfirmDialog>
         <ConfirmDialog isOpen={deleteConfirm.isOpen} onClose={deleteConfirm.closeDialog} onSubmit={removeLabel} data={deleteConfirm.dialogData}>
             Remove Annotation?

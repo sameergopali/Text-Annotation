@@ -1,19 +1,20 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
-import optionsData from '../assets/options.json';
+import { useFetch } from '../hooks/useFetch';
 import Selection from './Select';
 
-const   Modal = ({selected, onChange }) => {
-    
+const   Modal = ({selected, onChange,optionsData }) => {
     const [selectedCodes, setSelectedCode] = useState([]);
     const [showDefinition, setShowDefinition] = useState(false);
+    
+
+   
+    
    
 
 
-    useEffect(() => {
-        
-    }, []);
+   
 
     const handleCodeChange = (e, level) => {
         let value = e.target.value; 

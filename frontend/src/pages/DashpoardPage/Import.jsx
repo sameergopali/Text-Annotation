@@ -1,10 +1,11 @@
 import { useState } from "react";
 
+import Toast from "../../components/Toast";
 import { usePost } from "../../hooks/useFetch";
 
 function Import() {
     const [file, setFile] = useState(null);
-    const { loading, error, data, postData } = usePost({ url: 'http://localhost:8000/import' });
+    const { loading, error, success,reset, postData } = usePost({ url: 'http://localhost:8000/import' });
     const [message, setMessage] = useState('');
 
     const handleFileChange = (event) => {
@@ -48,8 +49,8 @@ function Import() {
                     Submit
                 </button>
                 {loading && <p>Uploading...</p>}
-                {error && <p className="text-red-500">Error uploading file: {error.message}</p>}
-                {data && <p className="text-green-500">File uploaded successfully!</p>}
+                {error && <Toast message="Error uploading" reset={reset} duration={1000}/>}
+                {success && <Toast message="File Uploaded Successfully!" duration={1000} reset={reset}/>}
                 {message && <p>{message}</p>}
             </div>
         </div>

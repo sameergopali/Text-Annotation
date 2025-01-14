@@ -144,15 +144,23 @@ class TextService:
             return {"error": "No file selected"}, 400
         file_content = uploaded_file.read().decode('utf-8') 
         logger.info([folder_name for folder_name in (self.base_dir/'txt_files').glob('*') if folder_name.is_dir()])
-        ind = max(int(folder.name.split('sample')[1]) for folder in (self.base_dir/'txt_files').glob('sample*') if folder.is_dir())
+        existing_folders = [folder for folder in (self.base_dir/'txt_files').glob('sample*') if folder.is_dir()]
+        if not existing_folders:
+            ind = -1
+        else:
+            ind = max(int(folder.name.split('sample')[1]) for folder in existing_folders)
         new_folder_name = f'sample{ind+1}'
         save_dir = self.base_dir/'txt_files'/new_folder_name
         save_dir.mkdir(parents=True, exist_ok=True)
         
-        for i, line in enumerate(file_content.split('\n')):
+        i = 0 
+        for  line in file_content.split('\n'):
+            if line.strip() == '':
+                continue
             filename = save_dir / f'message{i}.txt'
             with open(filename, 'w') as file:
                 file.write(line)
+            i += 1
  
         
         return {"message": "File imported"}, 200

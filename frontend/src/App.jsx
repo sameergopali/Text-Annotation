@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={ <PrivateRoute> <Dashboard /> </PrivateRoute>} />
           <Route path='/annotViewer/:folder' element={<PrivateRoute><AnnotationTool /></PrivateRoute>} />
-          <Route path='/labels/:name' element={<PrivateRoute><Labels /></PrivateRoute>} />
+          <Route path='/codebook/:name' element={<PrivateRoute><Labels /></PrivateRoute>} />
           <Route path='/difftool/:folder' element={<PrivateRoute><DiffTool /></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
