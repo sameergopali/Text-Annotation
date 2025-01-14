@@ -4,7 +4,7 @@ from flask import request
 from flask_jwt_extended import get_jwt_identity
 from .segment import SegmentProvider
 import json
-
+from .piimasking import PiiAnonymizer
 class TextService:
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent / 'data'
@@ -135,6 +135,7 @@ class TextService:
     
     def import_file(self):
         data = request.files['file']
+        anonymize = request.form.get('anonymize', 'false').lower() == 'true'
         logger.info(f"Data: {data}")
         if 'file' not in request.files:
             return {"error": "No file part in the request"}, 400
@@ -143,25 +144,35 @@ class TextService:
         if uploaded_file.filename == '':
             return {"error": "No file selected"}, 400
         file_content = uploaded_file.read().decode('utf-8') 
-        logger.info([folder_name for folder_name in (self.base_dir/'txt_files').glob('*') if folder_name.is_dir()])
         existing_folders = [folder for folder in (self.base_dir/'txt_files').glob('sample*') if folder.is_dir()]
         if not existing_folders:
-            ind = -1
+            ind = 0 
         else:
             ind = max(int(folder.name.split('sample')[1]) for folder in existing_folders)
         new_folder_name = f'sample{ind+1}'
         save_dir = self.base_dir/'txt_files'/new_folder_name
         save_dir.mkdir(parents=True, exist_ok=True)
-        
-        i = 0 
-        for  line in file_content.split('\n'):
+            
+        if anonymize:
+            pii = PiiAnonymizer()
+
+        i = 0
+        for line in file_content.split('\n'):
             if line.strip() == '':
                 continue
             filename = save_dir / f'message{i}.txt'
-            with open(filename, 'w') as file:
-                file.write(line)
-            i += 1
- 
-        
-        return {"message": "File imported"}, 200
+            message = {"message": "File import successful"}
+            try:
+                if anonymize:
+                    logger.info(f"anonymize: {anonymize}")
+                    line = pii.anonymize(line)
+            except Exception as e:
+                logger.error(f"Error: {e}")
+                message = {"message": "Anonymization failed"}
+            finally:
+                with open(filename, 'w') as file:
+                    file.write(line)
+                i += 1
+            
+        return message, 200
     
