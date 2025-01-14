@@ -8,7 +8,8 @@ class LoginService:
         self.users = {
             "admin": "admin",
             "sameer": "sameer",
-            "srivani": "srivani"
+            "srivani": "srivani",
+            "jordan": "jordan",
         }
     def get_user(self, username):
         if username in self.users:
@@ -17,7 +18,7 @@ class LoginService:
     
     def login(self):
         data = request.get_json()
-        username = data.get('username')
+        username = data.get('username').strip()
         password = data.get('password')
         user =  LoginService().get_user(username)
         if user and user.password == password:
