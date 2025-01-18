@@ -1,86 +1,145 @@
-{
-    "PartnershipProvider": [
-        "inviteCollaboration",
-        "requestsForOpinion",
-        "checkingUnderstanding",
-        "acknowledgePatientExpertiseKnowledge",
-        "interestCues",
-        "beingLessDominantListenMore",
-        "specificConnection",
-        "generalConnection",
-        "salutation",
-	    "involvement"
-    ],
-    "PartnershipPatient": [
-        "ActiveParticipation/involvement",
-        "ExpressOpinions",
-        "StatePreferences",
-        "SpecificConnection",
-        "GeneralGonnection",
-        "salutation",
-        "Buildtrust"
-    ],
-  
-    "EmotionalSupport": [
-        "ExpressConcern/unease",
-        "Sadness/fear",
-        "Reassurance",
-        "Reward",
-        "Appreciation/Gratitude", 
-	"AcknowledgeError",
-        "N/A"
-    ],
-    "SharedDecisionPatient": [
-        "ExploreOptions",
-        "ApprovalofDecision",
-        "N/A"
-    ],
-    "SharedDecisionProvider": [
-        "ExploreOptions",
-        "SummarizeConfirmUnderstanding",
-        "MakeDecision",
-        "EncourageQuestions",
-        "Approval",
-        "N/A"
-    ],
-    "InfoSeek": [
-        "Symptoms", 
-        "Prognosis",
-        "SchedulingAppt", 
-        "Diagnostics",
-        "Insurance",
-        "General information",
-        "Drugs",
-        "Other", 
-        "N/A"
-    ],
-    "InfoSeekSDOH": [
-        "EconomicStability", 
-        "EducationAccessAndQuality", 
-        "HealthCareAccessAndQuality", 
-        "NeighborhoodAndBuiltEnvironment", 
-        "SocialAndCommunityContext",
-        "Instruction",
-        "N/A"
-    ],
-    "InfoGive": [
-        "Symptoms", 
-        "Prognosis", 
-        "SchedulingAppt", 
-        "Insurance",
-        "Generalinformation",
-        "Other",
-        "Diagnostics",
-        "Drugs", 
-	"CareCoordination",
-        "N/A"
-    ],
-    "InfoGiveSDOH": [
-        "EconomicStability", 
-        "EducationAccessAndQuality", 
-        "HealthCareAccessAndQuality", 
-        "NeighborhoodAndBuiltEnvironment", 
-        "SocialAndCommunityContext", 
-        "N/A"    
+{   "name":"root",
+    "options": [
+        {
+            "name": "PartnershipProvider",
+            "options": [
+                {"name": "inviteCollaboration", "options": []},
+                {"name": "requestsForOpinion", "options": []},
+                {"name": "checkingUnderstanding", "options": []},
+                {"name": "acknowledgePatientExpertiseKnowledge", "options": []},
+                {"name": "interestCues", "options": []},
+                {"name": "beingLessDominantListenMore", "options": []},
+                {"name": "specificConnection", "options": []},
+                {"name": "generalConnection", "options": []},
+                {"name": "salutation", "options": []},
+                {"name": "Appreciation/Gratitude", "options": []},
+                {"name": "maintainCommunication", "options": []}
+            ]
+        },
+        {
+            "name": "PartnershipPatient",
+            "options": [
+                {"name": "activeParticipation/involvement", "options": []},
+                {"name": "expressOpinions", "options": []},
+                {"name": "statePreferences", "options": []},
+                {"name": "specificConnection", "options": []},
+                {"name": "generalConnection", "options": []},
+                {"name": "salutation", "options": []},
+                {"name": "Appreciation/Gratitude", "options": []},
+                {"name": "Buildtrust", "options": []}
+            ]
+        },
+        {
+            "name": "EmotionalSupport",
+            "options": [
+                {"name": "ExpressConcern/unease", "options": []},
+                {"name": "Sadness/fear", "options": []},
+                {"name": "Reassurance", "options": []},
+                {"name": "Reward", "options": []},
+                {"name": "AcknowledgeError", "options": []}
+            ]
+        },
+        {
+            "name": "SharedDecisionPatient",
+            "options": [
+                {"name": "ExploreOptions", "options": []},
+                {"name": "ApprovalofDecision", "options": []}
+            ]
+        },
+        {
+            "name": "SharedDecisionProvider",
+            "options": [
+                {"name": "ExploreOptions", "options": []},
+                {"name": "SummarizeConfirmUnderstanding", "options": []},
+                {"name": "MakeDecision", "options": []},
+                {"name": "EncourageQuestions", "options": []},
+                {"name": "Approval", "options": []}
+            ]
+        },
+        {
+            "name": "InfoSeek",
+            "options": [
+                {"name": "Symptoms", "options": []},
+                {"name": "Prognosis", "options": []},
+                {"name": "SchedulingAppt", "options": []},
+                {"name": "Diagnostics", "options": []},
+                {"name": "Insurance", "options": []},
+                {"name": "General information", "options": []},
+                {"name": "Drugs", "options": []}
+            ]
+        },
+        {
+            "name": "InfoSeekSDOH",
+            "options": [
+                {
+                    "name": "EconomicStability",
+                    "options": [
+                        {"name": "Employment Status", "options": []},
+                        {"name": "Socioeconomic Status (SES)", "options": []},
+                        {"name": "Socioeconomic Factors", "options": []},
+                        {"name": "Housing Instability", "options": []},
+                        {"name": "Income", "options": []},
+                        {"name": "Financial Insecurity", "options": []},
+                        {"name": "Work-related Challenges", "options": []},
+                        {"name": "Housing Insecurity", "options": []}
+                    ]
+                },
+                {"name": "EducationAccessAndQuality", "options": []},
+                {"name": "HealthCareAccessAndQuality", "options": [
+                    {"name": "Substance Use/Abuse", "options": []},
+                    {"name": "Lifestyle", "options": []},
+                    {"name": "Diet", "options": []},
+                    {"name": "Physical Activity", "options": []},
+                    {"name": "Insurance", "options": []},
+                    {"name": "Health Access", "options": []},
+                    {"name": "Sleep", "options": []}
+                ]},
+                {"name": "NeighborhoodAndBuiltEnvironment", "options": []},
+                {"name": "SocialAndCommunityContext", "options": []}
+            ]
+        },
+        {
+            "name": "InfoGive",
+            "options": [
+                {"name": "Symptoms", "options": []},
+                {"name": "Prognosis", "options": []},
+                {"name": "SchedulingAppt", "options": []},
+                {"name": "Insurance", "options": []},
+                {"name": "Generalinformation", "options": []},
+                {"name": "Diagnostics", "options": []},
+                {"name": "Drugs", "options": []},
+                {"name": "Instruction", "options": []}
+            ]
+        },
+        {
+            "name": "InfoGiveSDOH",
+            "options": [
+                {"name": "EconomicStability", "options": [
+                        {"name": "Employment Status", "options": []},
+                        {"name": "Socioeconomic Status (SES)", "options": []},
+                        {"name": "Socioeconomic Factors", "options": []},
+                        {"name": "Housing Instability", "options": []},
+                        {"name": "Income", "options": []},
+                        {"name": "Financial Insecurity", "options": []},
+                        {"name": "Work-related Challenges", "options": []},
+                        {"name": "Housing Insecurity", "options": []}
+                ]},
+                {"name": "EducationAccessAndQuality", "options": []},
+                {
+                    "name": "HealthCareAccessAndQuality",
+                    "options": [
+                        {"name": "Substance Use/Abuse", "options": []},
+                        {"name": "Lifestyle", "options": []},
+                        {"name": "Diet", "options": []},
+                        {"name": "Physical Activity", "options": []},
+                        {"name": "Insurance", "options": []},
+                        {"name": "Health Access", "options": []},
+                        {"name": "Sleep", "options": []}
+                    ]
+                },
+                {"name": "NeighborhoodAndBuiltEnvironment", "options": []},
+                {"name": "SocialAndCommunityContext", "options": []}
+            ]
+        }
     ]
 }

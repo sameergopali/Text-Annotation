@@ -1,25 +1,26 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
-import data from '../assets/options.json';
+import { useFetch } from '../hooks/useFetch';
+import Selection from './Select';
 
-const Modal = ({selected, onClose, onSave }) => {
-    const [selectedCode, setSelectedCode] = useState();
-    const [selectedSubcode, setSelectedSubcode] = useState();
+const   Modal = ({selected, onChange,optionsData }) => {
+    const [selectedCodes, setSelectedCode] = useState([]);
     const [showDefinition, setShowDefinition] = useState(false);
+    
+
+   
+    
+   
 
 
-    useEffect(() => {
-        if (Object.keys(data).length > 0) {
-            setSelectedCode(Object.keys(data)[0]);
-            setSelectedSubcode(data[Object.keys(data)[0]][0]);
-        }
-    }, []);
+   
 
-    const handleCodeChange = (event) => {
-        setSelectedCode(event.target.value);
-        setSelectedSubcode(data[event.target.value][0]);
-        
+    const handleCodeChange = (e, level) => {
+        let value = e.target.value; 
+        setSelectedCode([...selectedCodes.slice(0, level), value]);
+        onChange({codes: [...selectedCodes.slice(0, level), value]});
+        console.log(selectedCodes);
     };
   
     const checkboxChange = ()=>{
@@ -27,56 +28,44 @@ const Modal = ({selected, onClose, onSave }) => {
     }
 
 
-    const text = "This is a sample text for annotation tool. Write a paragraph here and select the text to annotate it. You can also add annotations to the text. ";
+    const renderDropdowns = () => {
+        let currData = optionsData;
+        const dropdowns = [];
+        let options = currData['options'].map(option =>  option.name);
+        console.log('options', options);
+        for (let i = 0; i <= selectedCodes.length; i++) {
+            if (options.length === 0) break;
+            const level = i;
+            dropdowns.push(
+                <Selection
+                    key={level}
+                    options={options}
+                    value={selectedCodes[level] || ''}
+                    onChange={(e) => handleCodeChange(e, level)}
+                />
+            );
+            const selectedValue = selectedCodes[level];
+            currData = currData['options'].find(option => option.name === selectedValue);
+            options = currData ? currData['options'].map(option => option.name) : [];
+        }
+        return dropdowns;
+    };
+
     return (
         <>
-        <div className='modal-overlay' ></div>
-        <div className='modal-container' >
-            <label> <center><b>Select Annotation</b></center> <i> <center>Text: {selected.text}</center></i></label>
-            <label> <input type="checkbox" onChange={checkboxChange} /> Show Defintion</label>
-
-            <div  className="grid-container">
-            <div>
-                <label>Code:</label>
-                <select name="code" className='options' onChange={(event) => handleCodeChange(event)}>
-                    {Object.keys(data).map((key) => (
-                        <option key={key} value={key} >
-                            {key}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <label>Subcode:</label>
-                <select name="subcode" value={selectedSubcode} className='options' onChange={(event) => setSelectedSubcode(event.target.value)}>
-                    {data[selectedCode]?.map((subcode) => (
-                        <option key={subcode} value={subcode} >
-                            {subcode}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            {showDefinition && <div id="definition" >
-                <b>Code Definition:</b><br/>
-                {text}
-            </div>}
-            {showDefinition && <div id="definiton" >
-                <b>SubCode Definition:</b><br/>
-                {text}
-            </div>}
-            <div>
-                <button  className='modal-close-btn' onClick={onClose}>
-                    Close
-                </button>
-            </div>
-            <div>
-                <button className='modal-save-btn' onClick={() => {onSave(selectedCode, selectedSubcode); onClose();}}>
-                    Save
-                </button>
-            </div>
-            </div>
-        </div>
-        </>
+            <h3 className='text-2xl font-semibold mb-4 text-center'>Code Selection</h3>
+                <div className='mb-4 max-h-32 bg-zinc-200 overflow-y-auto p-2 rounded'>
+                    <p className='text-sm'>Selected Text: <span className='text-red-500 '>{selected.text}</span></p>
+                </div>
+                <form id="type-form" className='space-y-4'>
+                    {renderDropdowns()}
+            
+                <div className='flex items-center mt-4'>
+                    <input type="checkbox" id="showDefinition" checked={showDefinition} onChange={checkboxChange} className='form-checkbox h-5 w-5 text-blue-600' />
+                    <label htmlFor="showDefinition" className='ml-2 text-lg'>Show Definition</label>
+                </div>
+            </form>
+     </>
     );
 };
 

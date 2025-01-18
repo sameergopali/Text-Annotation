@@ -7,7 +7,9 @@ class LoginService:
     def __init__(self):
         self.users = {
             "admin": "admin",
-            "sameer": "sameer"
+            "sameer": "sameer",
+            "srivani": "srivani",
+            "jordan": "jordan",
         }
     def get_user(self, username):
         if username in self.users:
@@ -16,11 +18,11 @@ class LoginService:
     
     def login(self):
         data = request.get_json()
-        username = data.get('username')
+        username = data.get('username').strip()
         password = data.get('password')
         user =  LoginService().get_user(username)
         if user and user.password == password:
-            access_token = create_access_token(identity=username, expires_delta=datetime.timedelta(days=30))
+            access_token = create_access_token(identity=username, expires_delta=False)
             return {"access_token": access_token}, 200
         else:
             return {"message": "Invalid username or password"}, 401
