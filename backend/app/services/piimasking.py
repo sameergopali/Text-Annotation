@@ -65,7 +65,7 @@ class PiiAnonymizer:
             
 
     def replace_email_headers(self,text):
-        pattern = re.compile(r"From: .*? Sent: .*? To: .*? Subject: .*?", re.DOTALL)
+        pattern = re.compile(r"From: .*? Sent: .*? To: .*? Subject:", re.DOTALL)
         return pattern.sub("From:  Sent:  To: Subject:", text)
 
         
