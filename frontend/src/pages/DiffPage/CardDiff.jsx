@@ -5,12 +5,12 @@ import TextSegment from "./Segments";
 
 function DiffCard({ text, segments, filter, handleFilterChange }) {
     return (
-        <Card title="Test Card" className="mt-4">
+        <Card>
             <Tabs defaultIndex={0}>
               <TabList>
-                <Tab index={0}>Tab 1</Tab>
-                <Tab index={1}>Tab 2</Tab>
-                <Tab index={2}>Tab 3</Tab>
+                <Tab className='px-4 py-2' index={0}>Tab 1</Tab>
+                <Tab className='px-4 py-2' index={1}>Tab 2</Tab>
+                <Tab className='px-4 py-2' index={2}>Tab 3</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel index={0}>

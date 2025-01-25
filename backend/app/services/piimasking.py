@@ -9,7 +9,7 @@ from loguru import logger
 from typing import List
 from dataclasses import dataclass
 import re
-
+from pathlib import Path
 
 
 @dataclass
@@ -25,17 +25,17 @@ class PiiAnonymizer:
         self.hospital_mapping = {}
         self._configure()
         
-        conf_bert = "config_bert.yaml"
+        conf_bert = Path(__file__).parent/"config_bert.yaml"
         provider_bert = NlpEngineProvider(conf_file=conf_bert)
 
-        conf_standford = "config_standford.yaml"
+        conf_standford =Path(__file__).parent/"config_standford.yaml"
         provider_standford = NlpEngineProvider(conf_file=conf_standford)
 
         nlp_engine_bert = provider_bert.create_engine()
         nlp_engine_standford = provider_standford.create_engine()
         
-        self.add_analyzer(EntityAnalyzer(entities=["PERSON", "LOCATION"], analyzer=AnalyzerEngine()))
-        self.add_analyzer(EntityAnalyzer(entities=["PERSON", "ORGANIZATION","DATE_TIME","PHONE_NUMBER","EMAIL_ADDRESS","ID",], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_standford, supported_languages=["en"])))
+        self.add_analyzer(EntityAnalyzer(entities=["PERSON","ORGANIZATION","DATE_TIME","PHONE_NUMBER","EMAIL_ADDRESS","ID",  "LOCATION"], analyzer=AnalyzerEngine()))
+        self.add_analyzer(EntityAnalyzer(entities=["PERSON", "ORGANIZATION"], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_standford, supported_languages=["en"])))
         self.add_analyzer(EntityAnalyzer(entities=["PERSON", "AGE","LOCATION"], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_bert, supported_languages=["en"])))
 
     def add_analyzer(self, analyzer):
@@ -46,13 +46,26 @@ class PiiAnonymizer:
 
 # Helper function to replace months and retain format
     def replace_month_and_date(self,original_text):
+        # Replace relative dates like today, yesterday, last week with the same text
+        relative_dates = ["now", "evening", "tonight", "morning", "noon","today", "yesterday", "week", "month", "year", "tomorrow"]
+        # Check if the text is a timestamp or date
+        timestamp_pattern = re.compile(r"\b\d{1,2}([\.:;\s]{0,1}\d{2})?\s*(AM|PM)?\b")
+       
+        for date in relative_dates:
+            if date in original_text.lower():
+                return original_text
+       
+        if timestamp_pattern.fullmatch(original_text):
+            logger.debug(f"{original_text=}")
+            return 'HH:MM'
+        
         original_text = "MM/DD/YYYY"
         return original_text
 
        
     def replace_name(self, text):  
         title = ""
-        title_match = re.match(r"(Dr|Dr\.|Drs\.|Mr\.|Mrs\.|Ms\.|Hi|Hello|Greetings)\s*", text)
+        title_match = re.match(r"(Dr|Dr|Drs|Mr|Mrs|Ms|Hi|Hello|Dear|Greetings)\s*", text, re.IGNORECASE)
         if title_match:
             logger.debug(f"{title_match=}")
             title = title_match.group(0)
@@ -98,7 +111,7 @@ class PiiAnonymizer:
                 # Preserve titles like Dr., Mrs., etc.
                 name_with_title = text[result.start:result.end]
                 title = ""
-                title_match = re.match(r"(Dr|Drs|Mr|Mrs|Ms|Hi|Hello|Greetings|Miss)\s*", name_with_title)
+                title_match = re.match(r"(Dr|Drs|Mr|Mrs|Ms|Hi|Hello|Dear|Greetings|Miss)\s*", name_with_title, re.IGNORECASE)
                 if title_match:
                     logger.debug(f"{title_match=}")
                     title = title_match.group(0)

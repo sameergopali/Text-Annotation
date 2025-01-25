@@ -6,6 +6,7 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from "../../components/Tabs/T
 import TopPanel from "../../components/TopPanel"
 import UserComparisonSelector from "../../components/UserSelector"
 import { useFetch } from "../../hooks/useFetch";
+import { featureFlags } from "../../hooks/useFlags";
 import DiffCard from "./CardDiff";
 import ComparisonTable from "./ComparisonTable";
 import { useFilter } from "./FilterOptions";
@@ -88,17 +89,21 @@ function DiffTool(){
                     setUser2={(u2)=>setUser2(u2)}
                 />
                 
-                <span className="mx-4">|</span>
-                <MatchingStratgeySelector 
-                    criterias={criterias}
-                    setMatchingCriteria={setMatchingCriteria}
-                />
+                { featureFlags.wipUI && (
+                    <>
+                        <span className="mx-4">|</span>
+                        <MatchingStratgeySelector 
+                            criterias={criterias}
+                            setMatchingCriteria={setMatchingCriteria}
+                        />
+                    </>
+                )}
              
             </TopPanel>
             <Tabs defaultIndex={0}>
                 <TabList >
-                    <Tab index={0}>Text View</Tab>
-                    <Tab index={1}>Comparison Table</Tab>
+                    <Tab  className='px-4 py-2' index={0}>Text View</Tab>
+                    <Tab className='px-4 py-2' index={1}>Comparison Table</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel index={0}>

@@ -1,4 +1,5 @@
 
-export const featureFlags = () => {      
-    experimentalUI: false
+export const featureFlags = {      
+        experimentalUI: true,
+        wipUI: false
 }   
