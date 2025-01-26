@@ -7,7 +7,7 @@ from flask_jwt_extended import jwt_required
 
 
 
-def get_routes(text_service, login_service, codebook_service, serve_react):    
+def get_routes(text_service, login_service, codebook_service, serve_react, search_service):    
     return {
         '/': {'methods': ['GET'], 'function': serve_react  },
         '/<path:path>': {'methods': ['GET'], 'function': serve_react},
@@ -24,6 +24,6 @@ def get_routes(text_service, login_service, codebook_service, serve_react):
         '/import': {'methods': ['POST'], 'function': jwt_required()(text_service.import_file)},
         '/codebook/': {'methods': ['GET'], 'function': jwt_required()(codebook_service.get_codebook)},
         '/codebook': {'methods': ['POST'], 'function': jwt_required()(codebook_service.save_codebook)},
-        
-        
+        '/search': {'methods': ['GET'], 'function': jwt_required()(search_service.search)}
+
     }

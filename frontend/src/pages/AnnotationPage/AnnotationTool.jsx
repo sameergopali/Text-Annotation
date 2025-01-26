@@ -1,14 +1,15 @@
 import {useState, useEffect} from 'react';
 import { use } from 'react';
+import { Search } from 'lucide-react';
 import { useParams } from "react-router-dom";
 
 import ConfirmDialog from '../../components/ConfirmDialog.jsx';
 import Modal from "../../components/Modal";
+import SearchModal from '../../components/SearchModal.jsx';
 import TopPanel from "../../components/TopPanel" 
 import { useDialog } from '../../hooks/useDialog.jsx';
 import {useFetch,usePost} from '../../hooks/useFetch.jsx';
 import AnnotationContent from './AnnotationContent.jsx';
-
 
 
 
@@ -28,6 +29,7 @@ const AnnotationTool = () => {
 
     const codeSelect =  useDialog();  
     const deleteConfirm = useDialog();
+    const search =  useDialog();
     const {postData}= usePost({url:"http://localhost:8000/labels"});
 
 
@@ -97,7 +99,11 @@ const AnnotationTool = () => {
 
     return (
         <>
-        <TopPanel total={total} onChange={setCurr}/>
+        <TopPanel total={total} onChange={setCurr}>
+            <button onClick={() => search.openDialog()} className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
+            <Search size={20} />
+            </button>
+        </TopPanel>
         <div className="flex items-center justify-center pt-4 ">
             <AnnotationContent text={text} labels={labels} 
             onDelete={deleteConfirm.openDialog} 
@@ -109,6 +115,8 @@ const AnnotationTool = () => {
                     codes: []
                     })}/>
         </div>
+        <SearchModal isOpen={search.isOpen} onClose={search.closeDialog} />
+
         <ConfirmDialog isOpen={codeSelect.isOpen} onClose={codeSelect.closeDialog} onSubmit={onSave} data={codeSelect.dialogData}>
             <Modal selected={codeSelect.dialogData} onChange={codeSelect.setDialogData}  optionsData={codebook} />
         </ConfirmDialog>

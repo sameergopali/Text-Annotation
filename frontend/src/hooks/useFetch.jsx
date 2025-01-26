@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { use } from "react";
 import axios from "axios";
 
 const useFetch = ({ 
@@ -6,13 +7,14 @@ const useFetch = ({
     onSuccess = null,
     queryparams={}, 
     options={}, 
-    dependencies = []
+    dependencies = [],
+    fetchOnMount = true
     }) => {
         const [data, setData] = useState(null);
         const [error, setError] = useState(null);
         const [loading, setLoading] = useState(false);
 
-        const fetchData = async () => {
+        const fetchData = async (queryparams) => {
             setLoading(true);
             setError(null);
             try {
@@ -44,11 +46,13 @@ const useFetch = ({
                 setLoading(false);
             }
         };
-
-        useEffect(() => {
-            fetchData();
+        
+        if (fetchOnMount) {
+            useEffect(() => {
+                    fetchData(queryparams);
+                }, [...dependencies]);
+        }
             
-        }, [...dependencies]);
 
         return { data, error, loading, refetch: fetchData };
         };

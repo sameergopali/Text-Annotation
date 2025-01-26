@@ -1,1 +1,770 @@
-[{"name": "PartnershipProvider", "options": [{"name": "inviteCollaboration", "options": []}, {"name": "requestsForOpinion", "options": []}, {"name": "checkingUnderstanding", "options": []}, {"name": "acknowledgePatientExpertiseKnowledge", "options": []}, {"name": "interestCues", "options": []}, {"name": "beingLessDominantListenMore", "options": []}, {"name": "alignment", "options": []}, {"name": "connection", "options": []}, {"name": "salutation", "options": []}, {"name": "Appreciation/Gratitude", "options": []}, {"name": "maintainCommunication", "options": []}, {"name": "signoff", "options": []}]}, {"name": "PartnershipPatient", "options": [{"name": "activeParticipation/involvement", "options": []}, {"name": "expressOpinions", "options": []}, {"name": "statePreferences", "options": []}, {"name": "alignment", "options": []}, {"name": "connection", "options": []}, {"name": "salutation", "options": []}, {"name": "Appreciation/Gratitude", "options": []}, {"name": "Buildtrust", "options": []}, {"name": "signoff", "options": []}]}, {"name": "EmotionalSupport", "options": [{"name": "ExpressConcern/unease", "options": []}, {"name": "Sadness/fear", "options": []}, {"name": "Reassurance", "options": []}, {"name": "Reward", "options": []}, {"name": "AcknowledgeError", "options": []}]}, {"name": "SharedDecisionPatient", "options": [{"name": "ExploreOptions", "options": []}, {"name": "ApprovalofDecision", "options": []}]}, {"name": "SharedDecisionProvider", "options": [{"name": "ShareOptions", "options": []}, {"name": "SummarizeConfirmUnderstanding", "options": []}, {"name": "MakeDecision", "options": []}, {"name": "EncourageQuestions", "options": []}, {"name": "Approval", "options": []}]}, {"name": "InfoSeek", "options": [{"name": "Symptoms", "options": []}, {"name": "Prognosis", "options": []}, {"name": "SchedulingAppt", "options": []}, {"name": "Diagnostics", "options": []}, {"name": "Insurance", "options": []}, {"name": "General information", "options": []}, {"name": "Drugs", "options": []}]}, {"name": "InfoSeekSDOH", "options": [{"name": "EconomicStability", "options": [{"name": "Employment Status", "options": []}, {"name": "Socioeconomic Status (SES)", "options": []}, {"name": "Socioeconomic Factors", "options": []}, {"name": "Housing Instability", "options": []}, {"name": "Income", "options": []}, {"name": "Financial Insecurity", "options": []}, {"name": "Work-related Challenges", "options": []}, {"name": "Housing Insecurity", "options": []}]}, {"name": "EducationAccessAndQuality", "options": []}, {"name": "HealthCareAccessAndQuality", "options": [{"name": "Substance Use/Abuse", "options": []}, {"name": "Lifestyle", "options": []}, {"name": "Diet", "options": []}, {"name": "Physical Activity", "options": []}, {"name": "Insurance", "options": []}, {"name": "Health Access", "options": []}, {"name": "Sleep", "options": []}]}, {"name": "NeighborhoodAndBuiltEnvironment", "options": []}, {"name": "SocialAndCommunityContext", "options": []}]}, {"name": "InfoGive", "options": [{"name": "Symptoms", "options": []}, {"name": "Prognosis", "options": []}, {"name": "SchedulingAppt", "options": []}, {"name": "Insurance", "options": []}, {"name": "Generalinformation", "options": []}, {"name": "Diagnostics", "options": []}, {"name": "Drugs", "options": []}, {"name": "Instruction", "options": []}]}, {"name": "InfoGiveSDOH", "options": [{"name": "EconomicStability", "options": [{"name": "Employment Status", "options": []}, {"name": "Socioeconomic Status (SES)", "options": []}, {"name": "Socioeconomic Factors", "options": []}, {"name": "Housing Instability", "options": []}, {"name": "Income", "options": []}, {"name": "Financial Insecurity", "options": []}, {"name": "Work-related Challenges", "options": []}, {"name": "Housing Insecurity", "options": []}]}, {"name": "EducationAccessAndQuality", "options": []}, {"name": "HealthCareAccessAndQuality", "options": [{"name": "Substance Use/Abuse", "options": []}, {"name": "Lifestyle", "options": []}, {"name": "Diet", "options": []}, {"name": "Physical Activity", "options": []}, {"name": "Insurance", "options": []}, {"name": "Health Access", "options": []}, {"name": "Sleep", "options": []}]}, {"name": "NeighborhoodAndBuiltEnvironment", "options": []}, {"name": "SocialAndCommunityContext", "options": []}]}]
+[
+    {
+        "description": {
+            "definition": "It refers to fostering a collaborative and equitable relationship between healthcare providers and patients. It involves equalizing the status between them, ensuring that patients feel valued and empowered in the decision-making process. This partnership is built by inviting patients to collaborate in their care, actively seeking their opinions, confirming their understanding of information, acknowledging the expertise they have gained through personal experiences, and maintaining open, respectful communication.",
+            "examples": []
+        },
+        "name": "PartnershipProvider",
+        "options": [
+            {
+                "description": {
+                    "definition": "Inviting patients to participate in decisions related to their condition (through informed consent, therapy plan or self-management) and contribute to provider learning through their expert knowledge acquired during patient's illness and hospitalization (b) ",
+                    "examples": []
+                },
+                "name": "inviteCollaboration",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": " Actively asking patients for their views,perspectives and preferences on treatment options, care plans, or health-related decisions. It involves encouraging patients to share their values, priorities, and concerns",
+                    "examples": []
+                },
+                "name": "requestsForOpinion",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Confirming that the patient fully grasps the information being communicated, ensuring that they comprehend key concepts related to their condition, treatment options, or care plan.  This involves actively engaging with the patient to assess their understanding, addressing any questions or uncertainties, and ensuring alignment between the provider's message and the patient’s perspective",
+                    "examples": []
+                },
+                "name": "checkingUnderstanding",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Recognizing and valuing the insights patients have gained from their own experiences with their health conditions. It involves empowering patients by offering them relevant, up-to-date information and sharing of resources like articles and websites, that can enhance their understanding and enable them to make more informed decisions about their care. ",
+                    "examples": []
+                },
+                "name": "acknowledgePatientExpertiseKnowledge",
+                "options": []
+            },
+          
+            {
+                "description": {
+                    "definition": "Confirmation or seeking confirmation that the patient and provider are \"on the same page\" and thinking about an issue in the same manner",
+                    "examples": []
+                },
+                "name": "alignment",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Information that is not directly related to the medical issue being discussed, strengthenting the relationship among between the patient and provider. ",
+                    "examples": []
+                },
+                "name": "connection",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Salutation refers to the act of greeting someone or acknowledging the start or end of a message. Greeting the provider by using their name or professional title.",
+                    "examples": []
+                },
+                "name": "salutation",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It involves appreciation and gratitude that are expressed when patients acknowledge the care and support they receive. It  also include expressions of how much they value the provider's efforts and responses to their concerns",
+                    "examples": []
+                },
+                "name": "Appreciation/Gratitude",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": " It involves means keeping the patient informed and engaged throughout their care process. It involves clearly communicating that more details or updates will be provided at a later time, ensuring the patient is aware of what to expect.",
+                    "examples": []
+                },
+                "name": "maintainCommunication",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Indicatting that the message is complete. A way of ending the message in a polite manner. ",
+                    "examples": []
+                },
+                "name": "signoff",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Patient partnership involves establishing and strengthening the alliance between patients and healthcare providers through active participation, open communication, and mutual respect. This collaboration is built by patients expressing their opinions about care, stating their values and preferences, and making informed decisions about their treatment. Active involvement encourages patients to take a proactive role in managing their health while fostering a deeper connection with providers. By maintaining this partnership, trust is cultivated, as patients feel heard, respected, and assured that their healthcare providers are working in their best interest",
+            "examples": []
+        },
+        "name": "PartnershipPatient",
+        "options": [
+            {
+                "description": {
+                    "definition": "Active participation and involvement in healthcare refer to the engagement of patients in their own care. This concept emphasizes the importance of patients being active partners rather than passive recipients of healthcare services. Patient is active in providing information to aid diagnosis and problem solving,  priorities for treatment or management, asking questions and/or contributing to the identification of management approaches. ",
+                    "examples": []
+                },
+                "name": "activeParticipation/involvement",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It refers to patients actively sharing their thoughts, and concerns about their care and treatment. Patients can give feedback on their experiences with healthcare services, including what they found helpful or what could be improved",
+                    "examples": []
+                },
+                "name": "expressOpinions",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Patient's individual values, desires, and priorities regarding their healthcare. These preferences can include aspects such as treatment options, care goals, lifestyle considerations, and the type of involvement they want in their plan of care.",
+                    "examples": []
+                },
+                "name": "statePreferences",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It means establishment of a meaningful, trust-based relationship between the patient and healthcare provider. This connection goes beyond just clinical interactions and involves understanding each other on a personal level, allowing for open communication, mutual respect, and collaboration in care.",
+                    "examples": []
+                },
+                "name": "alignment",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Information that is not directly related to the medical issue being discussed, strengthenting the relationship among between the patient and provider. ",
+                    "examples": []
+                },
+                "name": "connection",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Salutation refers to the act of greeting someone or acknowledging the start or end of a message. Greeting the provider by using their name or professional title.",
+                    "examples": []
+                },
+                "name": "salutation",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It involves appreciation and gratitude that are expressed when patients acknowledge the care and support they receive. It  also include expressions of how much they value the provider's efforts and responses to their concerns",
+                    "examples": []
+                },
+                "name": "Appreciation/Gratitude",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It means fostering a sense of confidence and reliability, where the patient feels assured that their provider is acting in their best interest. This involves the patient believing that the provider is honest, competent, and committed to their well-being while respecting their confidentiality.",
+                    "examples": []
+                },
+                "name": "Buildtrust",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Indicatting that the message is complete. A way of ending the message in a polite manner. ",
+                    "examples": []
+                },
+                "name": "signoff",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "It  involves recognizing and responding to emotional cues such as unease, sadness, appreciation, gratitude, reward, and approval. It requires understanding and validating the patient's feelings, providing reassurance, acknowledging errors transparently, and offering positive reinforcement., reward and approval. ",
+            "examples": []
+        },
+        "name": "Socialemotional/Empathy",
+        "options": [
+            {
+                "description": {
+                    "definition": "Expressions of concern, worry, nervousness. lt involves expressing their anxiety by voicing fears, asking repeated questions, or expressing doubts about their treatment.",
+                    "examples": []
+                },
+                "name": "ExpressConcern/unease",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Expression of sadness, fear, dread, anxiety. Sadness can arise from receiving a difficult diagnosis, dealing with chronic illness, or experiencing loss. ",
+                    "examples": []
+                },
+                "name": "Sadness/fear",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Encouragement or attempt to ease concern or sadness. It involves providing comfort and confidence to patients who may be feeling anxious or uncertain. It includes affirming that their concerns are being taken seriously, explaining procedures or treatments clearly, and ensuring them that they are receiving appropriate care.",
+                    "examples": []
+                },
+                "name": "Reassurance",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Reward refers to the positive reinforcement or recognition given to patients for their efforts or achievements related to their health. This can include messages that acknowledge a patient's progress, adherence to treatment plans, or healthy behaviors",
+                    "examples": []
+                },
+                "name": "Reward",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Recognition of a mistake. It involves acknowledging an error involves transparently informing about the mistake that occurred. ",
+                    "examples": []
+                },
+                "name": "AcknowledgeError",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Patients actively engage in exploring various treatment options, asking questions. Once fully informed, the patient gives approval of the decision, ensuring it aligns with their values and goals while being confident in the chosen path forward",
+            "examples": []
+        },
+        "name": "SharedDecisionPatient",
+        "options": [
+            {
+                "description": {
+                    "definition": "Indicators that a patient is interested in learning more about all options include asking detailed questions, expressing curiosity about alternatives, seeking clarification on treatment options, engaging in discussions about how options align with personal goals, and requesting additional resources to gather more information",
+                    "examples": []
+                },
+                "name": "ExploreOptions",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Patient asks and/or seeks permission from the provider",
+                    "examples": []
+                },
+                "name": "SeekingApproval",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Affirmation of a choice or decision . The patient agrees with the chosen plan or decision after understanding the available options and their implications",
+                    "examples": []
+                },
+                "name": "ApprovalofDecision",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Statements or questions that express an opportunity for a two-way exchange of information toward a decision about treatment options, evaluation of a decision, or alternative decisions including: exploring options, summarizing and confirming understanding, mutual agreement and  making a decision together, encouraging questions, and showing approval",
+            "examples": []
+        },
+        "name": "SharedDecisionProvider",
+        "options": [
+            {
+                "description": {
+                    "definition": "It involves  identifying, presenting, and discussing the possible options available for a particular decision or problem. It includes outlining all viable alternatives, including their risks, benefits, and potential outcomes.",
+                    "examples": []
+                },
+                "name": "ShareOptions",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "The provider or decision-maker recaps the key points of the discussion in concise, clear language. This includes summarizing the options, risks, benefits, and any other important details that were shared. It may also involve highlighting the patient's values, concerns that were expressed . After summarizing, the provider checks with the patient or participant to ensure they understood the information accurately. ",
+                    "examples": []
+                },
+                "name": "SummarizeConfirmUnderstanding",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "It refers to the collaborative process where both the provider and the patient jointly choose a course of action moving forward after considering all available options, risks, benefits, and personal preferences. ",
+                    "examples": []
+                },
+                "name": "MakeDecision",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Prompts to ask additional questions or seek more information ",
+                    "examples": []
+                },
+                "name": "EncourageQuestions",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Reinforcing a made decision via expression of positive reinforcement or validation of the patient's involvement in the decision-making process. ",
+                    "examples": []
+                },
+                "name": "Approval",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Information seeking involves obtaining knowledge about a particular event, medical condition, treatment option, or administrative matter. This may include understanding a patient's diagnosis, clarifying insurance coverage, confirming appointment schedules, or seeking guidance on hospital policies. ",
+            "examples": []
+        },
+        "name": "InfoSeek",
+        "options": [
+            {
+                "description": {
+                    "definition": "Subjective experiences or sensations reported by a patient that indicate the presence of a disease or health condition. They are the physical or mental manifestations of an illness that the patient perceives, such as pain, fatigue, dizziness, or nausea.",
+                    "examples": []
+                },
+                "name": "Symptoms",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Refers to the likely course and outcome of a disease. It includes predictions about whether the signs and symptoms will improve, worsen, or remain stable over time. It is concerned with expected development of a patient condition and how the disease is likely to progress, quality of life and expectations regarding the patient’s ability to carry out daily activities, survival rates and the likelihood of survival and life expectancy, and finally the probability of patient recovery or improvement in their condition.",
+                    "examples": []
+                },
+                "name": "Prognosis",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Dates, times, and other information related to seeing a provider, in person or virtually ",
+                    "examples": []
+                },
+                "name": "SchedulingAppt",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Diagnostics refers to the process of identifying a disease or medical condition based on a patient's symptoms, medical history, physical examination, imaging and scanning such s MRI or CT-scan, and results from tests or procedures.",
+                    "examples": []
+                },
+                "name": "Diagnostics",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Refers to knowledge that is not directly related to patient care or medical treatment but still serves an essential role in the healthcare system. This can include administrative, logistical, or   policy-related information that patients, healthcare providers, or administrators might seek.",
+                    "examples": []
+                },
+                "name": "General information",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Drugs refer to substances that are used to diagnose, treat, prevent, or manage diseases or medical conditions. These can include prescription medications, vitamins, over-the-counter drugs",
+                    "examples": []
+                },
+                "name": "Drugs",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Refers to process of seeking and requesting  information about the social, economic, and environmental factors influencing their health. These include seeking knowledge about employment opportunities, educational resources, healthcare services, housing stability, and community support systems",
+            "examples": []
+        },
+        "name": "InfoSeekSDOH",
+        "options": [
+            {
+                "description": {
+                    "definition": "Refers to the process of sharing knowledge about the social, economic, and environmental factors that significantly influence an individual’s health and well-being. These include economic stability, education access and quality, health care access and quality, neighborhood and built environment, and social and community context",
+                    "examples": []
+                },
+                "name": "EconomicStability",
+                "options": [
+                    {
+                        "description": {
+                            "definition": "Refers to an individual's current job situation, such as employed, unemployed, or underemployed",
+                            "examples": []
+                        },
+                        "name": "Employment Status",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "A measure of an individual's or household's economic and social position based on income, education, and occupation.",
+                            "examples": []
+                        },
+                        "name": "Socioeconomic Status (SES)",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The social and economic conditions that influence an individual's access to resources, opportunities, and overall quality of life.",
+                            "examples": []
+                        },
+                        "name": "Socioeconomic Factors",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Refers to issues related to the lack of stable or secure housing, including frequent moves or living in temporary accommodations.",
+                            "examples": []
+                        },
+                        "name": "Housing Instability",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The amount of money an individual earns through work or other sources, often determining their purchasing power and economic security.",
+                            "examples": []
+                        },
+                        "name": "Income",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The social and economic conditions that influence an individual's access to resources, opportunities, and overall quality of life.",
+                            "examples": []
+                        },
+                        "name": "Financial Insecurity",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Factors related to a person's job, such as physical demands, workplace stress, or unhealthy working conditions, that negatively impact health and well-being",
+                            "examples": []
+                        },
+                        "name": "Work-related Challenges",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The fear or risk of losing one's residence due to financial difficulties, eviction, or other circumstances.",
+                            "examples": []
+                        },
+                        "name": "Housing Insecurity",
+                        "options": []
+                    }
+                ]
+            },
+            {
+                "description": {
+                    "definition": "Providing information about availability and effectiveness of educational opportunities, the quality of education, including resources, teaching standards, and curriculum .",
+                    "examples": []
+                },
+                "name": "EducationAccessAndQuality",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Refers to the ability to obtain necessary health services and the effectiveness and standard of care patients receive",
+                    "examples": []
+                },
+                "name": "HealthCareAccessAndQuality",
+                "options": [
+                    {
+                        "description": {
+                            "definition": "The excessive or harmful use of substances like alcohol, drugs, or tobacco",
+                            "examples": []
+                        },
+                        "name": "Substance Use/Abuse",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Personal habits and behaviors, such as smoking, that influence physical and mental health",
+                            "examples": []
+                        },
+                        "name": "Lifestyle",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The types and amounts of food consumed regularly",
+                            "examples": []
+                        },
+                        "name": "Diet",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Regular movement or exercise",
+                            "examples": []
+                        },
+                        "name": "Physical Activity",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Financial protection for health-related expenses",
+                            "examples": []
+                        },
+                        "name": "Insurance",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Regular movement or exercise",
+                            "examples": []
+                        },
+                        "name": "Health Access",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "A natural, restorative process essential for mental and physical health, affecting cognitive function, mood, and overall well-being",
+                            "examples": []
+                        },
+                        "name": "Sleep",
+                        "options": []
+                    }
+                ]
+            },
+            {
+                "description": {
+                    "definition": "Neighborhood and built environment refers to the physical and social surroundings in which people live. Key aspects include housing quality and stability,such as as safe and affordable housing, access to reliable transportation, walkable areas, the safety of a neighborhood, availability of healthy food  and environmental factors like clean air, water, and green spaces and  proximity to healthcare services.",
+                    "examples": []
+                },
+                "name": "NeighborhoodAndBuiltEnvironment",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Social and community context refers to the relationships, interactions, and conditions within the environments where individuals live, work, and interact, and it significantly influences health outcomes. This context includes the support networks individuals have with spouse, family, friends, and community members, which provide emotional, financial, or practical assistance. It also encompasses community engagement, such as participation in local activities and access to social organizations or recreational facilities. Additionally, experiences of discrimination and social cohesion—how connected and included individuals feel in their communities—play a role in shaping health. The quality of relationships at work or in school also contributes to social and community context.",
+                    "examples": []
+                },
+                "name": "SocialAndCommunityContext",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": "Information giving is the process of providing clear, relevant, and actionable guidance, directions, or knowledge to assist patient or doctor in understanding or addressing a specific need or situation. This may involve information related to how to take medications, clarifying symptoms to help with diagnosis, explaining the prognosis of a disease, or outlining insurance coverage for treatments. It also includes care coordination, such as scheduling appointments or following post-procedure instructions, and sharing general information like hospital policies.",
+            "examples": []
+        },
+        "name": "InfoGive",
+        "options": [
+            {
+                "description": {
+                    "definition": "Subjective experiences or sensations reported by a patient that indicate the presence of a disease or health condition. They are the physical or mental manifestations of an illness that the patient perceives, such as pain, fatigue, dizziness, or nausea.",
+                    "examples": ["pain returned", "resting", "reclined for relief", "done well managing pain"]
+                 },
+                
+                "name": "Symptoms",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Refers to the likely course and outcome of a disease. It includes predictions about whether the signs and symptoms will improve, worsen, or remain stable over time. It is concerned with expected development of a patient condition and how the disease is likely to progress, quality of life and expectations regarding the patient’s ability to carry out daily activities, survival rates and the likelihood of survival and life expectancy, and finally the probability of patient recovery or improvement in their condition.",
+                    "examples": ["am I going to die?", "When am I going to die?", "How long will I live?"]
+                },
+                "name": "Prognosis",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Dates, times, and other information related to seeing a provider, in person or virtually ",
+                    "examples": []
+                },
+                "name": "SchedulingAppt",
+                "options": []
+            },
+         
+            {
+                "description": {
+                    "definition": "Refers to knowledge that is not directly related to patient care or medical treatment but still serves an essential role in the healthcare system. This can include administrative, logistical, or   policy-related information that patients, healthcare providers, or administrators might seek.",
+                    "examples": []
+                },
+                "name": "Generalinformation",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Diagnostics refers to the process of identifying a disease or medical condition based on a patient's symptoms, medical history, physical examination, imaging and scanning such s MRI or CT-scan, and results from tests or procedures.",
+                    "examples": []
+                },
+                "name": "Diagnostics",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Drugs refer to substances that are used to diagnose, treat, prevent, or manage diseases or medical conditions. These can include prescription medications, vitamins, over-the-counter drugs",
+                    "examples": []
+                },
+                "name": "Drugs",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": " Instructions means providing guidance, directions, or information to help  patients, caregivers, or healthcare staff to ensure proper understanding and execution of medical or administrative actions",
+                    "examples": []
+                },
+                "name": "Instruction",
+                "options": []
+            }
+        ]
+    },
+    {
+        "description": {
+            "definition": " Refers to the process of sharing knowledge about the social, economic, and environmental factors that significantly influence an individual’s health and well-being. These include economic stability, education access and quality, health care access and quality, neighborhood and built environment, and social and community context",
+            "examples": []
+        },
+        "name": "InfoGiveSDOH",
+        "options": [
+            {
+                "description": {
+                    "definition": "Refers to the process of sharing knowledge about the social, economic, and environmental factors that significantly influence an individual’s health and well-being. These include economic stability, education access and quality, health care access and quality, neighborhood and built environment, and social and community context",
+                    "examples": []
+                },
+                "name": "EconomicStability",
+                "options": [
+                    {
+                        "description": {
+                            "definition": "Refers to an individual's current job situation, such as employed, unemployed, or underemployed",
+                            "examples": []
+                        },
+                        "name": "Employment Status",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "A measure of an individual's or household's economic and social position based on income, education, and occupation.",
+                            "examples": []
+                        },
+                        "name": "Socioeconomic Status (SES)",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The social and economic conditions that influence an individual's access to resources, opportunities, and overall quality of life.",
+                            "examples": []
+                        },
+                        "name": "Socioeconomic Factors",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Refers to issues related to the lack of stable or secure housing, including frequent moves or living in temporary accommodations.",
+                            "examples": []
+                        },
+                        "name": "Housing Instability",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The amount of money an individual earns through work or other sources, often determining their purchasing power and economic security.",
+                            "examples": []
+                        },
+                        "name": "Income",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The social and economic conditions that influence an individual's access to resources, opportunities, and overall quality of life.",
+                            "examples": []
+                        },
+                        "name": "Financial Insecurity",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Factors related to a person's job, such as physical demands, workplace stress, or unhealthy working conditions, that negatively impact health and well-being",
+                            "examples": []
+                        },
+                        "name": "Work-related Challenges",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The fear or risk of losing one's residence due to financial difficulties, eviction, or other circumstances.",
+                            "examples": []
+                        },
+                        "name": "Housing Insecurity",
+                        "options": []
+                    }
+                ]
+            },
+            {
+                "description": {
+                    "definition": "Providing information about availability and effectiveness of educational opportunities, the quality of education, including resources, teaching standards, and curriculum .",
+                    "examples": []
+                },
+                "name": "EducationAccessAndQuality",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Refers to the ability to obtain necessary health services and the effectiveness and standard of care patients receive",
+                    "examples": []
+                },
+                "name": "HealthCareAccessAndQuality",
+                "options": [
+                    {
+                        "description": {
+                            "definition": "The excessive or harmful use of substances like alcohol, drugs, or tobacco",
+                            "examples": []
+                        },
+                        "name": "Substance Use/Abuse",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Personal habits and behaviors, such as smoking, that influence physical and mental health",
+                            "examples": []
+                        },
+                        "name": "Lifestyle",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "The types and amounts of food consumed regularly",
+                            "examples": []
+                        },
+                        "name": "Diet",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Regular movement or exercise",
+                            "examples": []
+                        },
+                        "name": "Physical Activity",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Financial protection for health-related expenses",
+                            "examples": []
+                        },
+                        "name": "Insurance",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "Regular movement or exercise",
+                            "examples": []
+                        },
+                        "name": "Health Access",
+                        "options": []
+                    },
+                    {
+                        "description": {
+                            "definition": "A natural, restorative process essential for mental and physical health, affecting cognitive function, mood, and overall well-being",
+                            "examples": []
+                        },
+                        "name": "Sleep",
+                        "options": []
+                    }
+                ]
+            },
+            {
+                "description": {
+                    "definition": "Neighborhood and built environment refers to the physical and social surroundings in which people live. Key aspects include housing quality and stability,such as as safe and affordable housing, access to reliable transportation, walkable areas, the safety of a neighborhood, availability of healthy food  and environmental factors like clean air, water, and green spaces and  proximity to healthcare services.",
+                    "examples": []
+                },
+                "name": "NeighborhoodAndBuiltEnvironment",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Social and community context refers to the relationships, interactions, and conditions within the environments where individuals live, work, and interact, and it significantly influences health outcomes. This context includes the support networks individuals have with spouse, family, friends, and community members, which provide emotional, financial, or practical assistance. It also encompasses community engagement, such as participation in local activities and access to social organizations or recreational facilities. Additionally, experiences of discrimination and social cohesion—how connected and included individuals feel in their communities—play a role in shaping health. The quality of relationships at work or in school also contributes to social and community context.",
+                    "examples": []
+                },
+                "name": "SocialAndCommunityContext",
+                "options": []
+            }
+        ]
+    }
+]

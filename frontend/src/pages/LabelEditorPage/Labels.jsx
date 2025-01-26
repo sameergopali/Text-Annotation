@@ -34,7 +34,7 @@ const Labels = () => {
 
     
     const addNewLabel = () => {
-        setCodebook([...codebook, {"name":"New Category", "options":[]}]);
+        setCodebook([...codebook, {"name":"New Category", "description":{"definition":"", "examples":[]}, "options":[]}]);
     } ;
 
     return  (
