@@ -34,8 +34,8 @@ class PiiAnonymizer:
         nlp_engine_bert = provider_bert.create_engine()
         nlp_engine_standford = provider_standford.create_engine()
         
-        self.add_analyzer(EntityAnalyzer(entities=["PERSON","ORGANIZATION","DATE_TIME","PHONE_NUMBER","EMAIL_ADDRESS","ID",  "LOCATION"], analyzer=AnalyzerEngine()))
-        self.add_analyzer(EntityAnalyzer(entities=["PERSON", "ORGANIZATION"], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_standford, supported_languages=["en"])))
+        self.add_analyzer(EntityAnalyzer(entities=["PERSON","ORGANIZATION","PHONE_NUMBER","EMAIL_ADDRESS","ID"], analyzer=AnalyzerEngine()))
+        self.add_analyzer(EntityAnalyzer(entities=["PERSON","DATE_TIME", "ORGANIZATION"], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_standford, supported_languages=["en"])))
         self.add_analyzer(EntityAnalyzer(entities=["PERSON", "AGE","LOCATION"], analyzer=AnalyzerEngine(nlp_engine=nlp_engine_bert, supported_languages=["en"])))
 
     def add_analyzer(self, analyzer):
