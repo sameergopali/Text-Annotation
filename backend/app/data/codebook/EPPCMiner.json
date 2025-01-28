@@ -593,6 +593,14 @@
                 },
                 "name": "Instruction",
                 "options": []
+            },
+            {
+                "description": {
+                    "definition": "Care coordination refers to the deliberate organization and integration of healthcare services to meet a patient’s needs effectively and efficiently. It involves ensuring that all the healthcare providers involved in a patient’s care communicate and collaborate to deliver timely, appropriate, and high-quality services.",
+                    "examples": []
+                },
+                "name": "carecoordination",
+                "options": []
             }
         ]
     },

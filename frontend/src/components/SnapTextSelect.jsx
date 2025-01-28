@@ -5,7 +5,7 @@ const SnapTextSelect = ({ text , onSelect}) => {
     const [selectionEnd, setSelectionEnd] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
 
-    const specials = ['.', ',', '!', '?', '(', ')', ':', ';', "'", '"','-'];
+    const specials = ['.', ',', '!', '?', '(', ')', ':', ';', "'", '"','-','1','2','3','4','5','6','7','8','9','0'];
     const words = text ? text.split(new RegExp(`(?<=\\s)|(?=\\s)|${specials.map(s => `(?<=\\${s})|(?=\\${s})`).join('|')}`)) : [];
 
     const wordOffsets = words.reduce((acc, word, index) => {
