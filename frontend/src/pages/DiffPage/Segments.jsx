@@ -60,20 +60,15 @@ const HoverableAnnotation = ({ segment, hoveredLabel, onMouseEnter, onMouseLeave
       onMouseLeave={onMouseLeave}
       onClick={() => onClick(segment.labels)}
     >
-      <span className={`relative z-10 ${isHovered ? 'font-medium' : ''}`}>
-        {segment.text}
-      </span>
-      {segment.labels.length > 0 && (
-        <span
-          className={`absolute inset-0 transition-all duration-200 ease-in-out
-            ${isHovered ? 'opacity-50' : 'opacity-30'}`}
-          style={{
+    
+      <span className={`relative z-10 inset-0  px-1 transition-all duration-200 ease-in-out ${isHovered ? 'font-medium' : ''}`}  
+      style={{
             backgroundColor: getBackgroundColor(),
             transform: isHovered ? 'scaleY(1.2)' : 'scaleY(1)',
             transformOrigin: 'center'
-          }}
-        />
-      )}
+          }}>
+        {segment.text}
+      </span>
     </span>
   );
 };
@@ -101,6 +96,7 @@ const Tooltip = ({ hoveredLabel, position, text }) => {
         }
       </div>
       <div className="text-gray-600">
+        <p>
         {hoveredLabel.map((label, index) => (
           <div key={index}>
             <strong>Annotator:</strong> {label.user}<br />
@@ -108,6 +104,7 @@ const Tooltip = ({ hoveredLabel, position, text }) => {
             <strong>Label:</strong> {label.codes.join(" :: ")}
           </div>
         ))}
+        </p>
       </div>
     </div>
   );
