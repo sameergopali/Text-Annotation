@@ -5,7 +5,7 @@ A simple tool for redacting PHI and annotating patient-provider conversations.
 ## Features
 
 - Highlight and label text spans
-- PHI masking 
+- PHI masking according to HIPAA compliance
 - Support for multiple annotation categories management
 - Multi-User annotations.
 - Fuzzy text search
