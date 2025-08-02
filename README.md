@@ -1,6 +1,8 @@
 # Text Annotation Tool
 
 A simple tool for redacting PHI and annotating patient-provider conversations. 
+![Screenshot](assets/screenshot.jpeg)
+
 
 ## Features
 

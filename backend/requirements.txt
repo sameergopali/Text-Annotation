@@ -16,3 +16,4 @@ sentence-transformers
 intervaltree
 textdistance
 rapidfuzz
+python-dotenv

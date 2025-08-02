@@ -5,11 +5,17 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from app.services import TextService, LoginService
 from app.services import CodebookService, SearchService
+from dotenv import load_dotenv
+import os
+
+# Load from .env file into environment
+
 
 class App:
     def __init__(self, config  ):
+        load_dotenv()
         self.app = Flask(__name__, static_folder="static/react/build", static_url_path="/")
-        self.app.config['JWT_SECRET_KEY']= 'super-secret'
+        self.app.config['JWT_SECRET_KEY']= os.getenv("JWT_SECRET_KEY")
         self.app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
         JWTManager(self.app)
         CORS(self.app)

@@ -1,0 +1,49 @@
+[
+    
+    {
+        "description": {
+            "definition": "Information giving is the process of providing clear, relevant, and actionable guidance, directions, or knowledge to assist patient or doctor in understanding or addressing a specific need or situation. This may involve information related to how to take medications, clarifying symptoms to help with diagnosis, explaining the prognosis of a disease, or outlining insurance coverage for treatments. It also includes care coordination, such as scheduling appointments or following post-procedure instructions, and sharing general information like hospital policies.",
+            "examples": []
+        },
+        "name": "InfoGive",
+        "options": [
+            {
+                "description": {
+                    "definition": "Subjective experiences or sensations reported by a patient that indicate the presence of a disease or health condition. They are the physical or mental manifestations of an illness that the patient perceives, such as pain, fatigue, dizziness, or nausea.",
+                    "examples": ["pain returned", "resting", "reclined for relief", "done well managing pain"]
+                 },
+                
+                "name": "Symptoms",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Dates, times, and other information related to seeing a provider, in person or virtually ",
+                    "examples": []
+                },
+                "name": "SchedulingAppt",
+                "options": []
+            },
+         
+            {
+                "description": {
+                    "definition": "Refers to knowledge that is not directly related to patient care or medical treatment but still serves an essential role in the healthcare system. This can include administrative, logistical, or   policy-related information that patients, healthcare providers, or administrators might seek.",
+                    "examples": []
+                },
+                "name": "Generalinformation",
+                "options": []
+            },
+            {
+                "description": {
+                    "definition": "Diagnostics refers to the process of identifying a disease or medical condition based on a patient's symptoms, medical history, physical examination, imaging and scanning such s MRI or CT-scan, and results from tests or procedures.",
+                    "examples": []
+                },
+                "name": "Diagnostics",
+                "options": []
+            }
+    
+         
+        ]
+    }
+ 
+]

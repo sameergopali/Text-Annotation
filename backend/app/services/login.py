@@ -7,11 +7,6 @@ class LoginService:
     def __init__(self):
         self.users = {
             "admin": "admin",
-            "sameer": "sameer",
-            "srivani": "srivani",
-            "jordan": "jordan",
-            "linhai": "linhai",
-            "yan": "yan"
         }
     def get_user(self, username):
         if username in self.users:

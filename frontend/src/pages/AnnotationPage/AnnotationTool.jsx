@@ -60,7 +60,7 @@ const AnnotationTool = () => {
 
     useFetch({  
         url:"http://localhost:8000/codebook/",
-        queryparams:{filename:'EPPCMiner'},
+        queryparams:{filename:'Codebook'},
         onSuccess: (data) => {
             console.log('data', data);
             setCodebook({options:data.codebook||[]});

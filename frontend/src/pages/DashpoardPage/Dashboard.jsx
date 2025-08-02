@@ -45,15 +45,6 @@ const Dashboard = () => {
                     <img src={yale} alt="Yale logo" className='w-8 h-8 mr-2' /> Annotation Platform
                 </h1>
                 <div className='space-y-4'>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Placeholder' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Placeholder')}>
-                        <img src={overview} alt="Overview" className='w-6 h-6 mr-2' /> Overview
-                    </div>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'TextAnnotator' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('TextAnnotator')}>
-                        <img src={data_extraction} alt="Data Extraction" className='w-6 h-6 mr-2' /> Data Extraction
-                    </div>
-                    <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Placeholder' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Placeholder')}>
-                        <img src={de_iden} alt="De-identification" className='w-6 h-6 mr-2' /> De-identification
-                    </div>
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'AnnotationManager' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('AnnotationManager')}>
                         <img src={text_annot} alt="Annotation Manager" className='w-6 h-6 mr-2' /> Annotation Manager
                     </div>
