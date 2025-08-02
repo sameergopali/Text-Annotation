@@ -27,12 +27,12 @@ const TabList = ({ children }) => {
     );
 };
 
-const Tab = ({ children, index }) => {
+const Tab = ({ children, index, className }) => {
     const { activeTab, setActiveTab } = useContext(TabsContext);
 
     return (
         <div
-            className={`cursor-pointer  px-4 py-2 ${activeTab === index ? 'bg-gray-200' : 'bg-gray-100'}`}
+            className={`cursor-pointer  ${className} ${activeTab === index ? 'bg-gray-200' : 'bg-gray-100'}`}
             onClick={() => setActiveTab(index)}
         >
             {children}

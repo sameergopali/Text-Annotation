@@ -4,7 +4,7 @@ from loguru import logger
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from app.services import TextService, LoginService
-from app.services import CodebookService
+from app.services import CodebookService, SearchService
 
 class App:
     def __init__(self, config  ):
@@ -17,12 +17,14 @@ class App:
         text_service =  TextService()
         login_service = LoginService()  
         codebook_service = CodebookService()    
-        self.setup_routes(text_service, login_service, codebook_service)
+        search_service = SearchService()    
+        self.setup_routes(text_service, login_service, codebook_service, search_service )
 
     def react_serve(self):
         return self.app.send_static_file('index.html')
-    def setup_routes(self, text_service, login_service, codebook_service):
-        routes = get_routes(text_service, login_service, codebook_service,self.react_serve)
+    
+    def setup_routes(self, text_service, login_service, codebook_service, search_service):
+        routes = get_routes(text_service, login_service, codebook_service,self.react_serve, search_service)
         for route, options in routes.items():
             self.app.add_url_rule(route, view_func=options['function'], methods=options['methods'])
         self.setup_middleware()

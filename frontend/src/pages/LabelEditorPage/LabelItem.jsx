@@ -12,7 +12,7 @@ const LabelItem = ({item, onDelete, onUpdate, level}) => {
         setIsEditing(false);
     }
     const addSubLabel= ()=>{
-        const newOptions = [...(item.options || []), {name: 'new label', options: []}];
+        const newOptions = [...(item.options || []), {name: 'new label', "description":{"definition":"", "examples":[]},options: []}];
         onUpdate({...item, options: newOptions});
         setIsExpanded(true);
     }

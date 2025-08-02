@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { BookOpen, FileDiffIcon } from 'lucide-react';
 import {useNavigate} from 'react-router-dom';
 
 import data_extraction from '../../assets/images/data_extraction.png';
@@ -57,10 +58,10 @@ const Dashboard = () => {
                         <img src={text_annot} alt="Annotation Manager" className='w-6 h-6 mr-2' /> Annotation Manager
                     </div>
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Schema' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Schema')}>
-                        <img src={text_annot} alt="Schema" className='w-6 h-6 mr-2' /> Codebook
+                        <BookOpen className='w-6 h-6 mr-2' /> Codebook
                     </div>
                     {featureFlags.experimentalUI && <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Diff' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Diff')}>
-                        <img src={text_annot} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Annotation Diff
+                        <FileDiffIcon alt="Annotation Diff" className='w-6 h-6 mr-2' /> Annotation Diff
                     </div>}
                     <div className={`flex items-center cursor-pointer hover:bg-green-600 p-2 rounded ${selectedContent === 'Import' ? 'bg-green-600' : ''}`} onClick={() => setSelectedContent('Import')}>
                         <img src={export_img} alt="Annotation Diff" className='w-6 h-6 mr-2' /> Import File
