@@ -8,7 +8,7 @@ A robust tool for creating annotated datasets from patient-provider conversation
 ## Features
 
 - 🏷️ **Text Span Annotation**: Annotate conversations into heirarchical custom-defined categories such as clinical instruction, patient concern, medication inquiry, and more.
-- 🤖 **PHI Redaction with Presidio**: Automatically de-identify personally identifiable information (PII/PHI) using [Microsoft Presidio](https://github.com/microsoft/presidio) and transformer-based NER models.
+- 🤖 **PHI Redaction with Presidio**: Automatically de-identify personally identifiable information (PII/PHI) using transformer-based NER models.
 - 📊 **Customizable Labels**: Define and manage custom annotation schemas for specific research use cases.
 - 🧠 **Export Data**: Outputs datasets in JSON format which includes text, labels and span start and end offset, for fine-tuning or prompting LLMs.
 
